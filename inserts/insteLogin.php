@@ -9,7 +9,6 @@ $con = conectar();
 $queryLogin = "SELECT `login`, `senha` FROM `usuario` WHERE login like '$login' and senha like '$senha'";
 $select = mysqli_query($con, $queryLogin);
 
-
 if (mysqli_num_rows($select) > 0) {
     $_SESSION['login'] = $login;
     $_SESSION['senha'] = $senha;

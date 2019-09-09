@@ -1,13 +1,14 @@
 <?php
 include_once '../util/corpo.php';
 include_once '../util/conecaoBD.php';
+include '../util/antiInjecao.php';
 cabeca();
 
 $complementoQuery = "";
 $net = mysqli_connect("localhost", "root", "", "bd_pc");
-isset($_POST['nome_maquina']) ? $complementoQuery .= " AND m.nome_maquina LIKE '%" . mysqli_escape_string($net, $_POST['nome_maquina']) . "%'" : $complementoQuery .= "";
-isset($_POST['mac']) ? $complementoQuery .= " AND m.mac LIKE '%" . mysqli_escape_string($net, $_POST['mac']) . "%'" : $complementoQuery .= "";
-isset($_POST['setor']) ? $complementoQuery .= " AND s.setor LIKE '%" . mysqli_escape_string($net, $_POST['setor']) . "%'" : $complementoQuery .= "";
+retirarInjecao(isset($_POST['nome_maquina'])) ? $complementoQuery .= " AND m.nome_maquina LIKE '%" . mysqli_escape_string($net, $_POST['nome_maquina']) . "%'" : $complementoQuery .= "";
+retirarInjecao(isset($_POST['mac'])) ? $complementoQuery .= " AND m.mac LIKE '%" . mysqli_escape_string($net, $_POST['mac']) . "%'" : $complementoQuery .= "";
+retirarInjecao(isset($_POST['setor'])) ? $complementoQuery .= " AND s.setor LIKE '%" . mysqli_escape_string($net, $_POST['setor']) . "%'" : $complementoQuery .= "";
 
 $query = "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id WHERE TRUE  " . $complementoQuery;
 $queryRack = mysqli_query($net, $query);

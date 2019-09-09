@@ -1,12 +1,14 @@
 <?php
 include_once './util/corpoLogin.php';
 cabeca();
+
 ?>
 <style>.card{
         opacity: 0.8;
     }
 </style>
-<body background="img/olinda.jpg"  >
+
+<body background="img/olinda.jpg"   >
     <div class="container">
         <div class="row justify-content-center my-5 "><br>
             <div class="col-xl-10 col-lg-12 col-md-9">
@@ -40,7 +42,7 @@ cabeca();
                                                         </div>
 
                                                     </div>
-
+                                                    
                                                     <div class="form-group">
 
                                                         <button type="submit" class="btn btn-primary "> Login </button>
