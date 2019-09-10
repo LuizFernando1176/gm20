@@ -1,5 +1,4 @@
-//inicializador dos icons //
-feather.replace();
+
 //inicializador das maskaras
 
 //mas exemplos //

@@ -2,7 +2,7 @@
 
 include_once '../config.php';
 testaSessao();
-
+$usuarioLogado =  json_decode($_SESSION["gmUsuarioLogado"], true);
 function cabeca() {
 
     echo '

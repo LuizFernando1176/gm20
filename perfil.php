@@ -1,6 +1,6 @@
 <?php
-include_once '../util/corpo.php';
-include_once '../util/conecaoBD.php';
+include_once './util/corpoIndex.php';
+include_once './util/conecaoBD.php';
 $coon = conectar();
 //query de setores//
 $query01 = "SELECT count(id) AS total FROM setor";
@@ -20,15 +20,15 @@ cabeca();
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
-                <div class="sidebar-brand-icon mx-3"><img src="../img/logo.svg" class="img-profile" width="80%" height="80%"></div>
+       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+                <div class="sidebar-brand-icon mx-3"><img src="./img/logo.svg" class="img-profile" width="80%" height="80%"></div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="../index.php">
+                <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Painel Controle</span></a>
             </li>
@@ -47,7 +47,7 @@ cabeca();
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Relatorios</h6>
-                        <a class="collapse-item" href="../relatorios/gerarRelatorio.php">Gerar Relatorio</a>
+                        <a class="collapse-item" href="relatorios/gerarRelatorio.php">Gerar Relatorio</a>
                     </div>
                 </div>
             </li>
@@ -60,9 +60,9 @@ cabeca();
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Cadastrar</h6>
-                        <a class="collapse-item" href="../cadastros/cadastroMaquinas.php">Maquinas</a>
-                        <a class="collapse-item" href="../cadastros/cadastroSetor.php">Setor</a>
-                        <a class="collapse-item" href="../cadastros/cadastroUser.php">Usuarios</a>
+                        <a class="collapse-item" href="cadastros/cadastroMaquinas.php">Maquinas</a>
+                        <a class="collapse-item" href="cadastros/cadastroSetor.php">Setor</a>
+                        <a class="collapse-item" href="cadastros/cadastroUser.php">Usuarios</a>
                     </div>
                 </div>
             </li>
@@ -74,9 +74,9 @@ cabeca();
                 <div id="collapseUtilitiess" class="collapse" aria-labelledby="headingUtilitiess" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Exibir</h6>
-                        <a class="collapse-item" href="../exibir/exibirMaquinas.php">Maquinas</a>
-                        <a class="collapse-item" href="../exibir/exibirSetores.php">Setor</a>
-                        <a class="collapse-item" href="../exibir/exibirUsuarios.php">Usuarios</a>
+                        <a class="collapse-item" href="exibir/exibirMaquinas.php">Maquinas</a>
+                        <a class="collapse-item" href="exibir/exibirSetores.php">Setor</a>
+                        <a class="collapse-item" href="exibir/exibirUsuarios.php">Usuarios</a>
                     </div>
                 </div>
             </li>
@@ -136,7 +136,7 @@ cabeca();
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-1 d-none d-lg-inline text-gray-800 small"><strong>Bem Vindo, <?php echo $usuarioLogado['nome'] ?></strong></span></a></strong>
+                                <span class="mr-1 d-none d-lg-inline text-gray-800 small"><strong>Bem Vindo,<?php echo $_SESSION['login'] ?></span></a></strong>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw  text-gray-400"></i>
@@ -221,69 +221,37 @@ cabeca();
                             <div class="card shadow mb-8">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary text-center">Cadastro de Usuarios</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary text-center">Maquinas Cadastradas</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <form  method="post" action="../inserts/insert_user.php">
+                                   
+                        <!-- Pie Chart -->
 
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="login">Login</label>
-                                                <input type="text" class="form-control" id="login" name="login" placeholder="Login" required="">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <!-- Content Column -->
+                            <div class="col-lg-6 mb-4">
+
+                                </a>
+                                <!-- Logout Modal-->
+                                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Você deseja sair?</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="login">Nome de Exibição</label>
-                                                <input type="text" class="form-control" id="loginExibicao" name="loginExibicao" placeholder="Login de Exibição" required="">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="senha">Senha</label>
-                                                <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="">
+                                            <div class="modal-body">Selecione o botão sair pra efetivar sua saida do sistema.</div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                                <a class="btn btn-primary" href="sair.php">Sair</a>
                                             </div>
                                         </div>
-                                        <center> <div class="form-row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="nivel">Nivel</label>
-                                                    <select name="nivel" id="nivel" class="form-control" required="">
-                                                        <option>Escolha o Nivel</option>
-                                                        <option value="1">Cadastrante</option>
-                                                        <option value="2">Administrador</option>
-                                                    </select>
-                                                </div>
-                                            </div></center>
-                                        <center>
-                                            <button type="submit" class="btn btn-success">Cadastrar</button>
-                                            <button type="reset" class="btn btn-danger">Apagar</button>
-                                        </center>
-                                    </form>
-                                    <!-- Pie Chart -->
-
-                                    <!-- Content Row -->
-                                    <div class="row">
-                                        <!-- Content Column -->
-                                        <div class="col-lg-6 mb-4">
-
-                                            </a>
-                                            <!-- Logout Modal-->
-                                            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Você deseja sair?</h5>
-                                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">Selecione o botão sair pra efetivar sua saida do sistema.</div>
-                                                        <div class="modal-footer">
-                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                                            <a class="btn btn-primary" href="../sair.php">Sair</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <?php
-                                            rodape();
-
-
-                                            
+                                    </div>
+                                </div>
+                                <?php
+                                rodape();
+                                

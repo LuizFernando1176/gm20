@@ -1,6 +1,7 @@
 <?php
 
 include_once '../util/conecaoBD.php';
+include_once '../util/antiInjecao.php';
 retirarInjecao($id_setor = $_POST ['id_setor']);
 retirarInjecao($id_rack = $_POST ['id_rack']);
 retirarInjecao($nome_maquina = $_POST ['nome_maquina']);
@@ -16,7 +17,6 @@ $queryMaquinas = "INSERT INTO `maquina`( `id_setor`, `id_rack`, `nome_maquina`, 
 $coon = conectar();
 $resultado = mysqli_query($coon, $queryMaquinas);
 
-echo $queryMaquinas;
 
 
 if ($resultado) {

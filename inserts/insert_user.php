@@ -6,7 +6,7 @@ retirarInjecao($senha = $_POST ['senha']);
 retirarInjecao($nivel = $_POST ['nivel']);
 retirarInjecao($loginExibicao = $_POST['loginExibicao']);
 
-$queryUsuario = "INSERT INTO `usuario`(`login`, `senha`, `nivel`,loginExibicao) VALUES ('$login','$senha','$nivel','$loginExibicao')";
+$queryUsuario = "INSERT INTO `usuario`(`login`, `senha`, `nivel`,loginExibicao) VALUES ('$login',md5(md5('$senha')),'$nivel','$loginExibicao')";
 $coon = conectar();
 $resultado = mysqli_query($coon, $queryUsuario);
 

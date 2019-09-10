@@ -1,26 +1,30 @@
 <?php
+
 include_once '../util/conecaoBD.php';
 include_once '../config.php';
 include_once '../util/antiInjecao.php';
 session_start();
 retirarInjecao($login = $_POST['login']);
 retirarInjecao($senha = $_POST['senha']);
-$retirarInjecao($loginExibicao = $_POST['loginExibicao']);
 $con = conectar();
-$queryLogin = "SELECT `login`, `senha`  FROM `usuario` WHERE login like '$login' and senha like '$senha' ";
+$queryLogin = "SELECT `login`, `senha` , `loginExibicao` FROM `usuario` WHERE login like '$login' and senha like md5(md5('$senha')) ";
 $select = mysqli_query($con, $queryLogin);
-$exibir = mysqli_fetch_assoc($select);
-$sesao01 = $exibir['loginExibir'];
 
 if (mysqli_num_rows($select) > 0) {
-    $_SESSION['login'] = $login;
-    $_SESSION['senha'] = $senha;
-//    $_SESSION ['loginExibicao']=$sesao01;
+    
+    $resultados = mysqli_fetch_assoc($select);
+    $nomeDeExibicao = $resultados['loginExibicao'];
+    $login = $resultados['loginExibicao'];
+    $usuarioLogadoParaSalvarNaSessao = '{
+	  "nome":"' . $nomeDeExibicao . '",
+	  "login":"' . $login . '"
+	}';
+    $_SESSION['gmUsuarioLogado'] = $usuarioLogadoParaSalvarNaSessao;
+   
     header('Location:../index.php');
 } else {
     unset($_SESSION['login']);
     unset($_SESSION['senha']);
-    unset($_SESSION ['loginExibicao']);
-    header('Location: ../login.php');
+    header('Location: ../login.php?erro=0');
 }
-?>
+ 

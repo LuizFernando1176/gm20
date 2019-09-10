@@ -7,8 +7,8 @@ cabeca();
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-                <div class="sidebar-brand-text mx-3">S.Maquinas <sup>2</sup></div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+                <div class="sidebar-brand-icon mx-3"><img src="../img/logo.svg" class="img-profile" width="80%" height="80%"></div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -122,7 +122,7 @@ cabeca();
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-1 d-none d-lg-inline text-gray-800 small"><strong>Bem Vindo,<?php echo $_SESSION['login'] ?></span></a></strong>
+                                <span class="mr-1 d-none d-lg-inline text-gray-800 small"><strong>Bem Vindo, <?php echo $usuarioLogado['nome'] ?></strong></span></a></strong>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw  text-gray-400"></i>
