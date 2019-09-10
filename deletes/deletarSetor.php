@@ -1,8 +1,9 @@
 <?php
 
 include_once '../util/conecaoBD.php';
+include_once '../util/antiInjecao.php';
 
-$id = $_GET['id'];
+retirarInjecao($id = $_GET['id']);
 
 $queryDeletaSetor = "DELETE FROM `setor` WHERE id ='$id'";
 $coon = conectar();

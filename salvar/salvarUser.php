@@ -1,12 +1,13 @@
 <?php
-
 include_once '../util/conecaoBD.php';
-$id = $_POST['id'];
-$login = $_POST['login'];
-$senha = $_POST ['senha'];
-$nivel = $_POST ['nivel'];
+include_once '../util/antiInjecao.php';
+retirarInjecao($id = $_POST['id']);
+retirarInjecao($login = $_POST['login']);
+retirarInjecao($senha = $_POST ['senha']);
+retirarInjecao($nivel = $_POST ['nivel']);
+retirarInjecao($loginExibicao=$_POST ['loginExibicao']);
 $coon = conectar();
-$query01 = "update `usuario`set login=('$login'),senha=('$senha'),nivel=('$nivel') where id=$id";
+$query01 = "update `usuario`set login=('$login'),senha=('$senha'),nivel=('$nivel'),loginExibicao('$loginExibicao') where id=$id";
 $queryCadastroSetor = mysqli_query($coon, $query01);
 $resultado = $queryCadastroSetor;
 

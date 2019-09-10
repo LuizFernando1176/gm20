@@ -1,7 +1,7 @@
 <?php
-
 include_once '../util/conecaoBD.php';
-$setor = $_POST['setor'];
+include_once '../util/antiInjecao.php';
+retirarInjecao($setor = $_POST['setor']);
 $coon = conectar();
 $query01 = "INSERT INTO `setor`( `setor`) VALUES ('$setor')";
 $queryCadastroUser = mysqli_query($coon, $query01);

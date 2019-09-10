@@ -1,10 +1,10 @@
 <?php
-
 include_once '../util/conecaoBD.php';
-$login = $_POST ['login'];
-$senha = $_POST ['senha'];
-$nivel = $_POST ['nivel'];
-$loginExibicao = $_POST['loginExibicao'];
+include_once '../util/antiInjecao.php';
+retirarInjecao($login = $_POST ['login']);
+retirarInjecao($senha = $_POST ['senha']);
+retirarInjecao($nivel = $_POST ['nivel']);
+retirarInjecao($loginExibicao = $_POST['loginExibicao']);
 
 $queryUsuario = "INSERT INTO `usuario`(`login`, `senha`, `nivel`,loginExibicao) VALUES ('$login','$senha','$nivel','$loginExibicao')";
 $coon = conectar();

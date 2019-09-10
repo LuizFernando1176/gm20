@@ -1,11 +1,11 @@
 <?php
-
 include_once '../util/conecaoBD.php';
 include_once '../config.php';
+include_once '../util/antiInjecao.php';
 session_start();
-$login = $_POST['login'];
-$senha = $_POST['senha'];
-$loginExibicao = $_POST['loginExibicao'];
+retirarInjecao($login = $_POST['login']);
+retirarInjecao($senha = $_POST['senha']);
+$retirarInjecao($loginExibicao = $_POST['loginExibicao']);
 $con = conectar();
 $queryLogin = "SELECT `login`, `senha`  FROM `usuario` WHERE login like '$login' and senha like '$senha' ";
 $select = mysqli_query($con, $queryLogin);

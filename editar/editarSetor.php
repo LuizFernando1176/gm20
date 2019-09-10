@@ -1,8 +1,9 @@
 <?php
 include_once '../util/conecaoBD.php';
 include_once '../util/corpo.php';
+include_once '../util/antiInjecao.php';
 cabeca();
-$id = $_GET['id'];
+retirarInjecao($id = $_GET['id']);
 $coon = conectar();
 $query02 = "SELECT `setor` FROM `setor` where id=$id";
 $query = mysqli_query($coon, $query02);

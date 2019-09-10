@@ -1,10 +1,11 @@
 <?php
 include_once '../util/conecaoBD.php';
 include_once '../util/corpo.php';
+include_once '../util/antiInjecao.php';
 cabeca();
-$id = $_GET['id'];
+retirarInjecao($id = $_GET['id']);
 $coon = conectar();
-$query02 = "SELECT `id`, `login`, `senha`, `nivel` FROM `usuario` WHERE  id=$id";
+$query02 = "SELECT `id`, `login`, `senha`, `nivel` ,`loginExibicao`  FROM `usuario` WHERE  id=$id";
 $query = mysqli_query($coon, $query02);
 $querySetor = mysqli_fetch_assoc($query);
 ?>
@@ -170,6 +171,10 @@ $querySetor = mysqli_fetch_assoc($query);
                                                     <input type="hidden" value="<?php echo $id; ?>" name="id" />
                                                     <label for="">Nome do Usuario</label>
                                                     <input type="text" class="form-control"  value="<?php echo $querySetor ['login'] ?>" name="login" placeholder="Nome do Usuario">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="login">Nome de Exibição</label>
+                                                    <input type="text" class="form-control" id="loginExibicao" value="<?php echo $querySetor ['loginExibicao'] ?>" name="loginExibicao" placeholder="Login de Exibição" required="">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="">Senha</label>
