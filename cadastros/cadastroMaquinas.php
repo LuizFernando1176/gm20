@@ -212,25 +212,25 @@ cabeca();
 
 
                                                 <script type="text/javascript">
-                                                    //consultando os radio responsaveis por exibir os conteudos.
-                                                    var tabs = document.querySelectorAll("[data-tab]");
+                                            //consultando os radio responsaveis por exibir os conteudos.
+                                            var tabs = document.querySelectorAll("[data-tab]");
 
-                                                    //consultando os conteudos a serem exibidos.
-                                                    var contents = document.querySelectorAll("[data-content]");
+                                            //consultando os conteudos a serem exibidos.
+                                            var contents = document.querySelectorAll("[data-content]");
 
-                                                    //declarando a função que será associada a cada input:radio
-                                                    var tabOnClick = function (elem) {
-                                                        for (var indice in contents) {
-                                                            //verificando se o input:radio selecionado está associado ao conteudo atual.
-                                                            var display = contents[indice].id == elem.target.dataset.tab ? "block" : "none";
-                                                            contents[indice].style.display = display;
-                                                        }
-                                                    }
+                                            //declarando a função que será associada a cada input:radio
+                                            var tabOnClick = function (elem) {
+                                                for (var indice in contents) {
+                                                    //verificando se o input:radio selecionado está associado ao conteudo atual.
+                                                    var display = contents[indice].id == elem.target.dataset.tab ? "block" : "none";
+                                                    contents[indice].style.display = display;
+                                                }
+                                            }
 
-                                                    //associando todos os input:radio ao método declarado acima.
-                                                    for (var indice in tabs) {
-                                                        tabs[indice].onclick = tabOnClick;
-                                                    }
+                                            //associando todos os input:radio ao método declarado acima.
+                                            for (var indice in tabs) {
+                                                tabs[indice].onclick = tabOnClick;
+                                            }
                                                 </script>
                                             </div>
 

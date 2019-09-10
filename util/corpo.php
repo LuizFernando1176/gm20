@@ -1,6 +1,8 @@
 <?php
+
 include_once '../config.php';
 testaSessao();
+
 function cabeca() {
 
     echo '

@@ -157,12 +157,12 @@ $row = mysqli_num_rows($queryRack);
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                   <style>
-                                        tr{
-                                            font-size: 15px;
-                                            font-weight: bold;
-                                        }
-                                    </style>
+                    <style>
+                        tr{
+                            font-size: 15px;
+                            font-weight: bold;
+                        }
+                    </style>
                     <!-- Pending Requests Card Example -->
                     <div class="row">
                         <!-- Area Chart -->
@@ -242,3 +242,4 @@ $row = mysqli_num_rows($queryRack);
 
 
 
+                                            

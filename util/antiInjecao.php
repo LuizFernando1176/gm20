@@ -1,4 +1,5 @@
 <?php
+
 //contra injeções SQL e JavaScript
 function retirarInjecao($string) {
     $string = preg_replace("/(from|select|insert|delete|where|drop|drop table|show|show tables|FROM|SELECT|INSERT|DELETE|WHERE|DROP|SHOW|;|#|\*|--|\\\\)/", "", $string);

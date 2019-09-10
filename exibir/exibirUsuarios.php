@@ -223,5 +223,5 @@ cabeca();
                                                 </div>
                                             </div>
                                             <?php
-                                                                                            rodape();
+                                            rodape();
                                             

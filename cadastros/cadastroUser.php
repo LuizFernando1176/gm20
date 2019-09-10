@@ -233,6 +233,10 @@ cabeca();
                                                 <input type="text" class="form-control" id="login" name="login" placeholder="Login" required="">
                                             </div>
                                             <div class="form-group col-md-6">
+                                                <label for="login">Nome de Exibição</label>
+                                                <input type="text" class="form-control" id="loginExibicao" name="loginExibicao" placeholder="Login de Exibição" required="">
+                                            </div>
+                                            <div class="form-group col-md-6">
                                                 <label for="senha">Senha</label>
                                                 <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="">
                                             </div>

@@ -4,9 +4,9 @@ include_once '../util/conecaoBD.php';
 $login = $_POST ['login'];
 $senha = $_POST ['senha'];
 $nivel = $_POST ['nivel'];
+$loginExibicao = $_POST['loginExibicao'];
 
-
-$queryUsuario = "INSERT INTO `usuario`(`login`, `senha`, `nivel`) VALUES ('$login','$senha','$nivel')";
+$queryUsuario = "INSERT INTO `usuario`(`login`, `senha`, `nivel`,loginExibicao) VALUES ('$login','$senha','$nivel','$loginExibicao')";
 $coon = conectar();
 $resultado = mysqli_query($coon, $queryUsuario);
 

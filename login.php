@@ -1,7 +1,7 @@
 <?php
+
 include_once './util/corpoLogin.php';
 cabeca();
-
 ?>
 <style>.card{
         opacity: 0.8;
@@ -42,7 +42,7 @@ cabeca();
                                                         </div>
 
                                                     </div>
-                                                    
+
                                                     <div class="form-group">
 
                                                         <button type="submit" class="btn btn-primary "> Login </button>
