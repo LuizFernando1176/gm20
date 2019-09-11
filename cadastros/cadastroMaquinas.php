@@ -181,7 +181,6 @@ cabeca();
                                             <label for="ponto">Ponto</label>
                                             <input type="text" class="form-control" id="ponto" name="ponto" placeholder="PPxPTx">
                                         </div>
-                                        <script src="../js/jquery.mask.js"></script>
                                         <script type="text/javascript">
                                             $(document).ready(function () {
                                                 $("#mac").mask("AA:AA:AA:AA:AA:00");
