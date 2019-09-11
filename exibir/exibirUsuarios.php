@@ -173,7 +173,12 @@ cabeca();
 
                                     <center><table  class="table table-striped table-responsive text-center" >
                                             <thead>
-                                                <tr><th>Nome do Usuario</th><th>Senha</th><th>Nivel</th><th>Editar</th><th>Excluir</th></tr>
+                                                <tr><th>Nome do Usuario</th>
+                                                    <th>Senha</th>
+                                                    <th>Nivel</th>
+                                                    <th>Editar</th>
+                                                    <?php if ($usuarioLogado['nivel'] == '2') { ?> <th>Editar</th><?php }?>
+                                                </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
@@ -183,8 +188,8 @@ cabeca();
                                                     echo "<td >" . $queryRacks['senha'] . "</td>";
                                                     echo "<td >" . $queryRacks['nivel'] . "</td>";
                                                     echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarUsuario.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                                                    echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarUsuarios.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
-                                                    echo "</tr>";
+                                                  if ($usuarioLogado['nivel'] == '2') {  echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarUsuarios.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+                                                  } echo "</tr>";
                                                 }
                                                 ?>
 

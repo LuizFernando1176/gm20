@@ -3,7 +3,7 @@ include_once '../util/conecaoBD.php';
 include_once '../util/corpo.php';
 $coon = conectar();
 cabeca();
-$query01 = "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id ";
+$query01 = "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id ORDER BY id DESC";
 $queryRack = mysqli_query($coon, $query01);
 ?>
 
@@ -12,7 +12,7 @@ $queryRack = mysqli_query($coon, $query01);
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
                 <div class="sidebar-brand-icon mx-3"><img src="../img/logo.svg" class="img-profile" width="80%" height="80%"></div>
             </a>
@@ -179,28 +179,42 @@ $queryRack = mysqli_query($coon, $query01);
 
                                     <center><table class="table table-striped table-responsive" >
                                             <thead>
-                                                <tr><th>Setor</th><th>N. do Usuário</th><th>N. da Máquina</th><th>INV</th><th>Tombo</th><th>MAC</th><th>Ponto</th><th>Rack</th><th>Sw</th><th>Barram.</th><th>Edit</th><th>Excluir</th></tr>
+                                                <tr><th>Setor</th>
+                                                    <th>N. do Usuário</th>
+                                                    <th>N. da Máquina</th>
+                                                    <th>INV</th>
+                                                    <th>Tombo</th>
+                                                    <th>MAC</th>
+                                                    <th>Ponto</th>
+                                                    <th>Rack</th>
+                                                    <th>Sw</th>
+                                                    <th>Barram.</th>
+                                                    <th>Edit</th>
+<?php if ($usuarioLogado['nivel'] == '2') { ?><th>Excluir</th><?php } ?>
+                                                </tr>
                                             </thead>
 
                                             <tbody>
-                                                <?php
-                                                while ($queryRacks = mysqli_fetch_assoc($queryRack)) {
-                                                    echo "<tr>";
-                                                    echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
-                                                    echo "<td >" . $queryRacks['nome_usuario'] . "</td>";
-                                                    echo "<td >" . $queryRacks['nome_maquina'] . "</td>";
-                                                    echo "<td >" . utf8_encode($queryRacks['inv']) . "</td>";
-                                                    echo "<td >" . utf8_encode($queryRacks['tombo']) . "</td>";
-                                                    echo "<td >" . $queryRacks['mac'] . "</td>";
-                                                    echo "<td >" . $queryRacks['ponto'] . "</td>";
-                                                    echo "<td >" . $queryRacks['rack'] . "</td>";
-                                                    echo "<td >" . utf8_encode($queryRacks['sw']) . "</td>";
-                                                    echo "<td >" . utf8_encode($queryRacks['barramento']) . "</td>";
-                                                    echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                                                    echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
-                                                    echo "</tr>";
-                                                }
-                                                ?>
+<?php
+while ($queryRacks = mysqli_fetch_assoc($queryRack)) {
+    echo "<tr>";
+    echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
+    echo "<td >" . $queryRacks['nome_usuario'] . "</td>";
+    echo "<td >" . $queryRacks['nome_maquina'] . "</td>";
+    echo "<td >" . utf8_encode($queryRacks['inv']) . "</td>";
+    echo "<td >" . utf8_encode($queryRacks['tombo']) . "</td>";
+    echo "<td >" . $queryRacks['mac'] . "</td>";
+    echo "<td >" . $queryRacks['ponto'] . "</td>";
+    echo "<td >" . $queryRacks['rack'] . "</td>";
+    echo "<td >" . utf8_encode($queryRacks['sw']) . "</td>";
+    echo "<td >" . utf8_encode($queryRacks['barramento']) . "</td>";
+    echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
+    if ($usuarioLogado['nivel'] == '2') {
+        echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+    }
+    echo "</tr>";
+}
+?>
 
                                             </tbody>
 
@@ -239,6 +253,5 @@ $queryRack = mysqli_query($coon, $query01);
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php
-                                        rodape();
-                                        
+<?php
+rodape();

@@ -7,7 +7,7 @@ $query01 = "SELECT count(id) AS total FROM setor";
 $totalQuery01 = mysqli_query($coon, $query01);
 $totalQuery001 = mysqli_fetch_assoc($totalQuery01);
 //query de maquina//
-$query02 = "SELECT count(id) AS total FROM maquina";
+$query02 = "SELECT count(id) AS total FROM maquina ORDER BY id DESC";
 $totalQuery02 = mysqli_query($coon, $query02);
 $totalQuery002 = mysqli_fetch_assoc($totalQuery02);
 //query de usuario//

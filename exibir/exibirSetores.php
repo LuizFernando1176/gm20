@@ -170,7 +170,10 @@ $queryRack = mysqli_query($coon, $query01);
                                 <div class="card-body">
                                     <table class="table table-striped table-responsive" >
                                         <thead>
-                                            <tr><th>Nome do Setor</th><th>Editar</th><th>Excluir</th></tr>
+                                            <tr><th>Nome do Setor</th>
+                                                <th>Editar</th>
+                                               <?php if ($usuarioLogado['nivel'] == '2') { ?> <th>Excluir</th><?php } ?>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             <?php
@@ -178,8 +181,8 @@ $queryRack = mysqli_query($coon, $query01);
                                                 echo "<tr>";
                                                 echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
                                                 echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarSetor.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                                                echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarSetor.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
-                                                echo "</tr>";
+                                              if ($usuarioLogado['nivel'] == '2') {  echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarSetor.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+                                              } echo "</tr>";
                                             }
                                             ?>
 
