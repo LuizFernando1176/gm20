@@ -181,18 +181,15 @@ cabeca();
                                             <label for="ponto">Ponto</label>
                                             <input type="text" class="form-control" id="ponto" name="ponto" placeholder="PPxPTx">
                                         </div>
+                                        <script src="../js/jquery.mask.js"></script>
                                         <script type="text/javascript">
-                                            $(function () {
-                                                $("#mac").mask("AA:AA:AA:AA:A0:AA");
-
+                                            $(document).ready(function () {
+                                                $("#mac").mask("AA:AA:AA:AA:AA:00");
                                             });
                                         </script>
-                                        <script src="../js/jquery.mask.js" type="text/javascript"></script>
-                                        <script src="../js/jquery.maskedinput.js" type="text/javascript"></script>
-                                        <script src="../js/jquery.min.js" type="text/javascript"></script>
 
                                         <div class="form-group">
-                                            <label for="mac">Mac</label>
+                                            <label for="">Mac</label>
                                             <input type="text" class="form-control" id="mac" name="mac" placeholder="MAC Apenas numeros">
                                         </div>
                                         <div class="form-row">
@@ -212,25 +209,25 @@ cabeca();
 
 
                                                 <script type="text/javascript">
-                                            //consultando os radio responsaveis por exibir os conteudos.
-                                            var tabs = document.querySelectorAll("[data-tab]");
+                                                    //consultando os radio responsaveis por exibir os conteudos.
+                                                    var tabs = document.querySelectorAll("[data-tab]");
 
-                                            //consultando os conteudos a serem exibidos.
-                                            var contents = document.querySelectorAll("[data-content]");
+                                                    //consultando os conteudos a serem exibidos.
+                                                    var contents = document.querySelectorAll("[data-content]");
 
-                                            //declarando a função que será associada a cada input:radio
-                                            var tabOnClick = function (elem) {
-                                                for (var indice in contents) {
-                                                    //verificando se o input:radio selecionado está associado ao conteudo atual.
-                                                    var display = contents[indice].id == elem.target.dataset.tab ? "block" : "none";
-                                                    contents[indice].style.display = display;
-                                                }
-                                            }
+                                                    //declarando a função que será associada a cada input:radio
+                                                    var tabOnClick = function (elem) {
+                                                        for (var indice in contents) {
+                                                            //verificando se o input:radio selecionado está associado ao conteudo atual.
+                                                            var display = contents[indice].id == elem.target.dataset.tab ? "block" : "none";
+                                                            contents[indice].style.display = display;
+                                                        }
+                                                    }
 
-                                            //associando todos os input:radio ao método declarado acima.
-                                            for (var indice in tabs) {
-                                                tabs[indice].onclick = tabOnClick;
-                                            }
+                                                    //associando todos os input:radio ao método declarado acima.
+                                                    for (var indice in tabs) {
+                                                        tabs[indice].onclick = tabOnClick;
+                                                    }
                                                 </script>
                                             </div>
 
