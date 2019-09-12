@@ -153,7 +153,7 @@ $queryRack = mysqli_query($coon, $query01);
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                          
                     </div>
                     <!-- Content Row -->
 
@@ -164,8 +164,9 @@ $queryRack = mysqli_query($coon, $query01);
                             <div class="card shadow mb-8">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary text-center">Exibir Maquinas</h6> 
-                                    <a href="../cadastros/cadastroMaquinas.php" class="btn-circle" role="button" aria-pressed="true">+</a>
+                                    <h6 class="m-0 font-weight-bold text-primary text-center">Exibir Maquinas</h6>
+                                    
+                                   <a href="../cadastros/cadastroMaquinas.php" class="btn btn-info"><span class="icon text-white-50"</span><i class=" fas fa-check"></i><span class="text">Adicionar Máquinas</span></a>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">

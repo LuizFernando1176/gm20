@@ -147,7 +147,7 @@ cabeca();
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                          
                     </div>
                     <!-- Content Row -->
                     <div class="col-xl-12 col-lg-12">
