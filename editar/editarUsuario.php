@@ -131,7 +131,7 @@ $querySetor = mysqli_fetch_assoc($query);
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-1 d-none d-lg-inline text-gray-800 small"><strong>Bem Vindo, <?php echo $usuarioLogado['nome'] ?></strong></span></a></strong>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="../perfil.php">
                                     <i class="fas fa-user fa-sm fa-fw  text-gray-400"></i>
                                     Perfil
                                 </a>

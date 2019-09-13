@@ -1,0 +1,1 @@
+http://rafaelcouto.com.br/paginacao-de-resultados-com-php-mysql/
