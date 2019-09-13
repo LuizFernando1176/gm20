@@ -15,8 +15,9 @@ $query03 = "SELECT count(id) AS total FROM usuario";
 $totalQuery03 = mysqli_query($coon, $query03);
 $totalQuery003 = mysqli_fetch_assoc($totalQuery03);
 cabeca();
+$indice = isset($_GET['alerta'])? $_GET['alerta'] : null;
 ?>
-<body id="page-top">
+<body id="page-top" onload="mostrarAlerta(<?php echo $indice ?>);">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
@@ -161,7 +162,7 @@ cabeca();
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Controle</h1>
-                          
+                          <div id="divAlerta" class="divAlerta"></div>
                     </div>
                     <!-- Content Row -->
                     <div class="row">
@@ -285,7 +286,7 @@ cabeca();
                         <div class="row">
                             <!-- Content Column -->
                             <div class="col-lg-6 mb-4">
-
+<script src="js/script.js" type="text/javascript"></script>
                                 </a>
                                 <!-- Logout Modal-->
                                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

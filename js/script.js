@@ -25,7 +25,7 @@ function mostrarAlerta(indice) {
     }
     $(document).ready(function () {
         $(divAlerta).fadeIn(1000);
-        $(divAlerta).fadeOut(5000);
+        $(divAlerta).fadeOut(25000);
     });
 }
 //inicializador das maskaras

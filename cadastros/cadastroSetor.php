@@ -17,7 +17,7 @@ $totalQuery003 = mysqli_fetch_assoc($totalQuery03);
 cabeca();
 if ($usuarioLogado['nivel'] == '1'){
 
-    echo '<script Language="javascript"> alert("Você nao tem acesso a esta pagina!!"); location.href="../index.php"; </script>';
+ header('Location:../index.php?alerta=12');
 } else {
 
     
