@@ -15,6 +15,14 @@ $query03 = "SELECT count(id) AS total FROM usuario";
 $totalQuery03 = mysqli_query($coon, $query03);
 $totalQuery003 = mysqli_fetch_assoc($totalQuery03);
 cabeca();
+if ($usuarioLogado['nivel'] == '1'){
+
+    echo '<script Language="javascript"> alert("Você nao tem acesso a esta pagina!!"); location.href="../index.php"; </script>';
+} else {
+
+    echo '<script Language="javascript"> location.href="../exibir/exibirUsuario.php"; </script>';
+
+}
 ?>
 <body id="page-top">
     <!-- Page Wrapper -->

@@ -5,6 +5,14 @@ $coon = conectar();
 $query01 = "SELECT `id`,`login`, `senha`, `nivel` FROM `usuario` WHERE 1";
 $queryRack = mysqli_query($coon, $query01);
 cabeca();
+if ($usuarioLogado['nivel'] == '1'){
+
+    echo '<script Language="javascript"> alert("Você nao tem acesso a esta pagina!!"); location.href="../index.php"; </script>';
+} else {
+
+    echo '<script Language="javascript"> location.href="../exibir/exibirUsuario.php"; </script>';
+
+}
 ?>
 
 

@@ -5,6 +5,14 @@ $coon = conectar();
 cabeca();
 $query01 = "SELECT * FROM `setor` WHERE 1 ";
 $queryRack = mysqli_query($coon, $query01);
+if ($usuarioLogado['nivel'] == '1'){
+
+    echo '<script Language="javascript"> alert("Você nao tem acesso a esta pagina!!"); location.href="../index.php"; </script>';
+} else {
+
+    echo '<script Language="javascript"> location.href="../exibir/exibirUsuario.php"; </script>';
+
+}
 ?>
 
 
@@ -172,7 +180,7 @@ $queryRack = mysqli_query($coon, $query01);
                                         <thead>
                                             <tr><th>Nome do Setor</th>
                                                 <th>Editar</th>
-                                               <?php if ($usuarioLogado['nivel'] == '2') { ?> <th>Excluir</th><?php } ?>
+                                                <th>Excluir</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -181,9 +189,9 @@ $queryRack = mysqli_query($coon, $query01);
                                                 echo "<tr>";
                                                 echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
                                                 echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarSetor.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                                              if ($usuarioLogado['nivel'] == '2') {  echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarSetor.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+                                               echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarSetor.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
                                               } echo "</tr>";
-                                            }
+                                            
                                             ?>
 
                                         </tbody>
