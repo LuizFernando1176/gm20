@@ -1,4 +1,5 @@
 <?php
+
 include_once '../util/conecaoBD.php';
 include_once '../util/antiInjecao.php';
 retirarInjecao($login = $_POST ['login']);
@@ -13,8 +14,7 @@ $resultado = mysqli_query($coon, $queryUsuario);
 
 
 if ($resultado) {
-
-    echo '<script Language="javascript"> alert("Usuario Cadastrado Com sucesso!!"); location.href="../cadastros/cadastroUser.php"; </script>';
+    header('Location:../exibir/exibirUsuarios.php?alerta=9');
 } else {
 
     echo 'Erro a cadastra usuario ';

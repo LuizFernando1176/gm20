@@ -6,7 +6,6 @@ session_start();
 session_destroy();
 unset($_SESSION);
 echo' <SCRIPT Language="javascript">
-alert("Usuário desconectado !!");
 location.href="./login.php";
 </SCRIPT>';
 ?>

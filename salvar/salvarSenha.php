@@ -10,9 +10,8 @@ $resultado = $queryCadastroSetor;
 
 
 if ($resultado > 0) {
-
-    echo '<script Language="javascript"> alert("Senha editada Com sucesso!!"); location.href="../perfil.php" </script>';
-} else {
+header('Location:../perfil.php?alerta=11');
+   } else {
 
     echo 'Erro a editar usuario ';
 }

@@ -13,8 +13,8 @@ $resultado = mysqli_query($coon, $queryDeletaSetor);
 
 if ($resultado) {
 
-    echo '<script Language="javascript"> alert("Setor deletado com sucesso!!"); location.href="../exibir/exibirSetores.php"; </script>';
-    echo $id;
+ header('Location:../exibir/exibirSetores.php?alerta=4');
+   
 } else {
 
     echo 'Erro a cadastra Maquina ';

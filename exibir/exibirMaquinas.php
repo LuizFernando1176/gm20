@@ -5,16 +5,16 @@ $coon = conectar();
 cabeca();
 $query01 = "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id ORDER BY id DESC";
 $queryRack = mysqli_query($coon, $query01);
-
+$indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 ?>
 
 
-<body id="page-top">
+<body onload="mostrarAlerta(<?php echo $indice ?>);" id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+            <a style="background-color: white"  class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
                 <div class="sidebar-brand-icon mx-3"><img src="../img/logo.svg" class="img-profile" width="80%" height="80%"></div>
             </a>
             <!-- Divider -->
@@ -180,6 +180,7 @@ $queryRack = mysqli_query($coon, $query01);
 
 
                                     <center><table class="table table-striped table-responsive" >
+                                            <div id="divAlerta" class="divAlerta"></div>
                                             <thead>
                                                 <tr><th>Setor</th>
                                                     <th>N. do Usuário</th>
@@ -210,8 +211,9 @@ $queryRack = mysqli_query($coon, $query01);
                                                     echo "<td >" . $queryRacks['rack'] . "</td>";
                                                     echo "<td >" . utf8_encode($queryRacks['sw']) . "</td>";
                                                     echo "<td >" . utf8_encode($queryRacks['barramento']) . "</td>";
-                                                   if ($usuarioLogado['nivel'] == '2') { echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                                                    
+                                                    if ($usuarioLogado['nivel'] == '2') {
+                                                        echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
+
                                                         echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
                                                     }
                                                     echo "</tr>";
@@ -224,7 +226,7 @@ $queryRack = mysqli_query($coon, $query01);
 
                                 </div></center>
 
-
+                                <script src="../js/script.js" type="text/javascript"></script>
 
 
 

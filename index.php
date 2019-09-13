@@ -21,8 +21,8 @@ cabeca();
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <div class="sidebar-brand-icon mx-3"><img src="./img/logo.svg" class="img-profile" width="80%" height="80%"></div>
+            <a style="background-color: white" class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+                <div class="sidebar-brand-icon mx-3" ><img src="./img/logo.svg" class="img-profile" width="80%" height="80%"></div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -250,8 +250,8 @@ cabeca();
                                                     <th>Rack</th>
                                                     <th>Switch</th>
                                                     <th>Barramento</th>
-                                                    <th>Editar</th>
-                                                    <th>Excluir</th>
+                                                  <?php if ($usuarioLogado['nivel'] == '2') { ?><th>Editar</th>
+                                                  <th>Excluir</th><?php }  ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -268,8 +268,8 @@ cabeca();
                                                     echo "<td >" . $queryRacks['rack'] . "</td>";
                                                     echo "<td >" . utf8_encode($queryRacks['sw']) . "</td>";
                                                     echo "<td >" . utf8_encode($queryRacks['barramento']) . "</td>";
-                                                    echo "<td >" . "<button class='btn btn-warning'><a href='./editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                                                    echo "<td >" . "<button class='btn btn-danger'><a href='./deletes/deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+                                                   if ($usuarioLogado['nivel'] == '2') { echo "<td >" . "<button class='btn btn-warning'><a href='./editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
+                                                    echo "<td >" . "<button class='btn btn-danger'><a href='./deletes/deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>"; } 
                                                     echo "</tr>";
                                                 }
                                                 ?>

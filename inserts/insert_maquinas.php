@@ -21,7 +21,7 @@ $resultado = mysqli_query($coon, $queryMaquinas);
 
 if ($resultado) {
 
-    echo '<script Language="javascript"> alert("Maquina Cadastrada Com sucesso!!"); location.href="../exibir/exibirMaquinas.php"; </script>';
+header('Location:../exibir/exibirMaquinas.php?alerta=1');
 } else {
 
     echo 'Erro a cadastra maquina ';

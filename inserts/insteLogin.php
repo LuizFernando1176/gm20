@@ -3,6 +3,8 @@
 include_once '../util/conecaoBD.php';
 include_once '../config.php';
 include_once '../util/antiInjecao.php';
+include_once '../util/alertas.php';
+
 session_start();
 retirarInjecao($login = filter_input(INPUT_POST, 'login'));
 retirarInjecao($senha = filter_input(INPUT_POST, 'senha'));
@@ -35,6 +37,6 @@ if (mysqli_num_rows($select) > 0) {
 } else {
     unset($_SESSION['login']);
     unset($_SESSION['senha']);
-    header('Location: ../login.php?erro=0');
+    header('Location: ../login.php?alerta=10');
 }
  

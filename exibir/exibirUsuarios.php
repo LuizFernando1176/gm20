@@ -5,23 +5,22 @@ $coon = conectar();
 $query01 = "SELECT `id`,`login`, `senha`, `nivel` FROM `usuario` WHERE 1";
 $queryRack = mysqli_query($coon, $query01);
 cabeca();
-if ($usuarioLogado['nivel'] == '1'){
+$indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
+if ($usuarioLogado['nivel'] == '1') {
 
     echo '<script Language="javascript"> alert("Você nao tem acesso a esta pagina!!"); location.href="../index.php"; </script>';
 } else {
-
-    echo '<script Language="javascript"> location.href="../exibir/exibirUsuario.php"; </script>';
-
+    
 }
 ?>
 
 
-<body id="page-top">
+<body id="page-top" onload="mostrarAlerta(<?php echo $indice ?>);">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+            <a style="background-color: white" class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
                 <div class="sidebar-brand-icon mx-3"><img src="../img/logo.svg" class="img-profile" width="80%" height="80%"></div>
             </a>
             <!-- Divider -->
@@ -161,7 +160,7 @@ if ($usuarioLogado['nivel'] == '1'){
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-                          
+
                     </div>
                     <!-- Content Row -->
 
@@ -180,31 +179,32 @@ if ($usuarioLogado['nivel'] == '1'){
 
 
                                     <center><table  class="table table-striped table-responsive text-center" >
+                                            <div id="divAlerta" class="divAlerta"></div>
                                             <thead>
                                                 <tr><th>Nome do Usuario</th>
                                                     <th>Senha</th>
                                                     <th>Nivel</th>
-                                                    <th>Editar</th>
-                                                    <?php if ($usuarioLogado['nivel'] == '2') { ?> <th>Editar</th><?php }?>
+
+<?php if ($usuarioLogado['nivel'] == '2') { ?> <th>Editar</th><?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                while ($queryRacks = mysqli_fetch_assoc($queryRack)) {
-                                                    echo "<tr>";
-                                                    echo "<td >" . $queryRacks['login'] . "</td>";
-                                                    echo "<td >" . $queryRacks['senha'] . "</td>";
-                                                    echo "<td >" . $queryRacks['nivel'] . "</td>";
-                                                    echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarUsuario.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                                                  if ($usuarioLogado['nivel'] == '2') {  echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarUsuarios.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
-                                                  } echo "</tr>";
-                                                }
-                                                ?>
+<?php
+while ($queryRacks = mysqli_fetch_assoc($queryRack)) {
+    echo "<tr>";
+    echo "<td >" . $queryRacks['login'] . "</td>";
+    echo "<td >" . $queryRacks['senha'] . "</td>";
+    echo "<td >" . $queryRacks['nivel'] . "</td>";
+    if ($usuarioLogado['nivel'] == '2') {
+        echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarUsuarios.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+    } echo "</tr>";
+}
+?>
 
                                             </tbody>
                                         </table></center>
 
-
+                                    <script src="../js/script.js" type="text/javascript"></script>
 
 
 

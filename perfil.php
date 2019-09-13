@@ -6,13 +6,14 @@ $coon = conectar();
 $query01 = "SELECT `id`,`login`, `senha`, `nivel` FROM `usuario` WHERE 1";
 $queryRack = mysqli_query($coon, $query01);
 cabeca();
+$indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 ?>
-<body id="page-top">
+<body id="page-top" onload="mostrarAlerta(<?php echo $indice ?>);">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href=" index.php">
+            <a style="background-color: white"  class="sidebar-brand d-flex align-items-center justify-content-center" href=" index.php">
                 <div class="sidebar-brand-icon mx-3"><img src=" img/logo.svg" class="img-profile" width="80%" height="80%"></div>
             </a>
             <!-- Divider -->
@@ -162,6 +163,7 @@ cabeca();
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
+                                    <div id="divAlerta" class="divAlerta"></div>
                                     <form  method="post" action="salvar/salvarUserPerfil.php">
                                         <center> <div class="form-row">
                                                 <div class="form-group col-md-3"></div>
@@ -209,7 +211,7 @@ cabeca();
                                             <button type="submit" class="btn btn-warning">Salvar</button>
                                         </center>
                                     </form></div></div></div></div><br><BR><br><BR>
-
+                    <script src="js/script.js" type="text/javascript"></script>
                     <!-- Logout Modal-->
                     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">

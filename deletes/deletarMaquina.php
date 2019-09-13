@@ -13,8 +13,8 @@ $resultado = mysqli_query($coon, $queryDeletaMaquina);
 
 if ($resultado) {
 
-    echo '<script Language="javascript"> alert("Maquina deletada  com sucesso!!"); location.href="../exibir/exibirMaquinas.php"; </script>';
-    echo $id;
+header('Location:../exibir/exibirMaquinas.php?alerta=2');
+    
 } else {
 
     echo 'Erro a cadastra usuario ';

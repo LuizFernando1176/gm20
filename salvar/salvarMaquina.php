@@ -20,7 +20,7 @@ echo $queryMaquinas;
 
 if ($resultado) {
 
-    echo '<script Language="javascript"> alert("Maquina editada  com sucesso!!"); location.href="../exibir/exibirMaquinas.php"; </script>';
+    header('Location:../exibir/exibirMaquinas.php?alerta=3');
 } else {
 
     echo 'Erro a editar usuario ';

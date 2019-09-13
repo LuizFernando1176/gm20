@@ -12,8 +12,7 @@ $resultado = mysqli_query($coon, $queryDeletaUser);
 
 if ($resultado) {
 
-    echo '<script Language="javascript"> alert("Usuario deletado com sucesso!!"); location.href="../exibir/exibirUsuarios.php"; </script>';
-    echo $id;
+  header('Location:../exibir/exibirUsuarios.php?alerta=7');
 } else {
 
     echo 'Erroao delatar Usuario ';

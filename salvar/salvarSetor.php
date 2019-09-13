@@ -12,8 +12,7 @@ echo $query01;
 
 if ($resultado) {
 
-    echo '<script Language="javascript"> alert("Setor editado Com sucesso!!"); location.href="../exibir/exibirSetores.php"; </script>';
-} else {
+   header('Location:../exibir/exibirSetores.php?alerta=5');
 
     echo 'Erro a editar usuario ';
 }

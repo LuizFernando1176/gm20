@@ -9,9 +9,8 @@ $resultado = $queryCadastroUser;
 
 
 if ($resultado) {
-
-    echo '<script Language="javascript"> alert("Setor Cadastrado Com sucesso!!"); location.href="../cadastros/cadastroSetor.php"; </script>';
-} else {
+    header('Location:../exibir/exibirSetores.php?alerta=6');
+   } else {
 
     echo 'Erro a cadastra usuario ';
 }

@@ -14,7 +14,7 @@ echo $query01;
 
 if ($resultado > 0) {
 
-    echo '<script Language="javascript"> alert("Usuario editado Com sucesso!!"); location.href="../perfil.php" </script>';
+    header('Location:../perfil.php?alerta=8');
 } else {
 
     echo 'Erro a editar usuario ';
