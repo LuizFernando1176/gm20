@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11-Set-2019 às 12:59
+-- Tempo de geração: 17-Set-2019 às 16:52
 -- Versão do servidor: 10.3.16-MariaDB
 -- versão do PHP: 7.3.8
 
@@ -66,10 +66,12 @@ CREATE TABLE `maquina` (
 --
 
 INSERT INTO `maquina` (`id`, `id_setor`, `id_rack`, `nome_maquina`, `nome_usuario`, `ponto`, `mac`, `id_sw`, `id_barramento`, `inv`, `tombo`) VALUES
-(27, 2, 9, 'NEFISC', 'emmily.eduarda ', 'PT02(SW)', 'A0:D3:C1:6A:51:9F', 2, 1, '', 'sem tombo'),
-(28, 28, 1, 'Reserva08-PC', 'Nathalia', 'Ponto da ManutenÃ§Ã£o', 'C8:9C:DC:44:38:3C', 2, 1, '', 'Sem tombo'),
+(27, 27, 1, 'NEFISC', 'emmily.eduarda ', 'PT02(SW)', 'A0:D3:C1:6A:51:9F', 2, 1, '', 'sem tombo'),
+(28, 28, 1, 'Reserva08', 'Nathalia', 'Ponto da ManutenÃ§Ã£o', 'C8:9C:DC:44:38:3C', 2, 1, '', ''),
 (29, 2, 9, 'ASSESSORIA-PC', 'Nathalia.Carvalho', 'PT05 (Hub)', '4C:72:B9:38:A8:41', 2, 1, '', 'Sem tombo'),
-(30, 3, 1, 'CAVAL34', 'patricia.fontes', 'PP03PT11', '70:71:BC:58:14:27', 2, 1, '', 'Sem tombo');
+(30, 3, 1, 'CAVAL34', 'patricia.fontes', 'PP03PT11', '70:71:BC:58:14:27', 2, 1, '', 'Sem tombo'),
+(32, 32, 1, 'Nefis-Hp', 'Luciana.Escariao ', 'PP01PT22', '64:31:50:FF:D', 1, 1, '', 'Sem TOMBO'),
+(33, 33, 1, 'Walter-desktop', 'Edson.lins', 'PP01PT20', '54:BE:F7:1C:84:B0', 1, 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -190,7 +192,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `login`, `senha`, `nivel`, `loginExibicao`) VALUES
 (9, 'luiz.ferreira', 'e4fe566400c3a5c5ebbf55b6a7f5ca9d', 2, 'Luiz Fernando'),
-(10, 'Luiz', 'd9b1d7db4cd6e70935368a1efb10e377', 2, 'Silva');
+(11, 'teste', '14e1b600b1fd579f47433b88e8d85291', 1, 'teste');
 
 --
 -- Índices para tabelas despejadas
@@ -250,7 +252,7 @@ ALTER TABLE `barramento`
 -- AUTO_INCREMENT de tabela `maquina`
 --
 ALTER TABLE `maquina`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de tabela `rack`
@@ -274,7 +276,7 @@ ALTER TABLE `switch`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restrições para despejos de tabelas
