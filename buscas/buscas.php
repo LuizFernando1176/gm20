@@ -177,7 +177,7 @@ $row = mysqli_num_rows($queryRack);
                                     <div   >
                                         <table class="table table-striped table-responsive" >
                                             <thead>
-                                                <tr><th>Setor</th><th>N. do Usuário</th><th>N. da Máquina</th><th>INV</th><th>Tombo</th><th>MAC</th><th>Ponto</th><th>Rack</th><th>Switch</th><th>Barramento</th></tr>
+                                                <tr><th>Setor</th><th>N. do Usuário</th><th>N. da Máquina</th><th>INV</th><th>Tombo</th><th>MAC</th><th>Ponto</th><th>Rack</th><th>Switch</th><th>Barramento</th><th>Imprimir</th></tr>
                                             </thead>
 
                                             <tbody>
@@ -197,6 +197,7 @@ $row = mysqli_num_rows($queryRack);
                                                     echo "<td >" . $queryRacks['rack'] . "</td>";
                                                     echo "<td >" . utf8_encode($queryRacks['sw']) . "</td>";
                                                     echo "<td >" . utf8_encode($queryRacks['barramento']) . "</td>";
+                                                    echo "<td >" . "<button class='btn btn-info'><a href='../view/visualizarMaquina.php?id=" . $queryRacks['id'] . "'>Imprimir</a></button>" . "</td>";
                                                     echo "</tr>";
                                                 }
                                                 ?>
@@ -208,8 +209,7 @@ $row = mysqli_num_rows($queryRack);
                                             <script src="../js/jquery.mask.js" type="text/javascript"></script>
                                             <script src="../js/bootstrap.min.js" type="text/javascript"></script>
                                         </table>
-                                        <center><button class='btn btn-warning'value='Print this page' onClick='window.print()'>Imprimir</button></center>
-
+                                       
                                     </div>
                                     <!-- Pie Chart -->
 

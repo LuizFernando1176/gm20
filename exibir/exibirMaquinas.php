@@ -192,6 +192,7 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                                                     <th>Rack</th>
                                                     <th>Sw</th>
                                                     <th>Barram.</th>
+                                                    <th>Imprimir</th>
                                                     <?php if ($usuarioLogado['nivel'] == '2') { ?> <th>Edit</th>
                                                         <th>Excluir</th><?php } ?>
                                                 </tr>
@@ -211,6 +212,7 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                                                     echo "<td >" . $queryRacks['rack'] . "</td>";
                                                     echo "<td >" . utf8_encode($queryRacks['sw']) . "</td>";
                                                     echo "<td >" . utf8_encode($queryRacks['barramento']) . "</td>";
+                                                    echo "<td >" . "<button class='btn btn-info'><a href='../view/visualizarMaquina.php?id=" . $queryRacks['id'] . "'>Imprimir</a></button>" . "</td>";
                                                     if ($usuarioLogado['nivel'] == '2') {
                                                         echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
 
