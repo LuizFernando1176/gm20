@@ -1,6 +1,6 @@
 <?php
 include_once 'util/conecaoBD.php';
-include_once './util/corpoIndex.php';
+include_once './util/corpo.php';
 include_once './util/antiInjecao.php';
 $coon = conectar();
 $query01 = "SELECT `id`,`login`, `senha`, `nivel` FROM `usuario` WHERE 1";
@@ -10,17 +10,53 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 ?>
 <body id="page-top" onload="mostrarAlerta(<?php echo $indice ?>);">
     <!-- Page Wrapper -->
+    <script language=JavaScript>
+	hoje = new Date()
+	dia = hoje.getDate()
+	dias = hoje.getDay()
+	mes = hoje.getMonth()
+	function y2k(number) {
+		return (number < 1000) ? number + 1900 : number;
+	}
+	wyear = y2k(hoje.getYear())
+	ano = hoje.getYear()
+	if (dia < 10)
+		dia = '0' + dia
+	function CriaArray (n) {
+		this.length = n }
+	NomeDia = new CriaArray(7)
+	NomeDia[0] = 'Domingo'
+	NomeDia[1] = 'Segunda-feira'
+	NomeDia[2] = 'Terça-feira'
+	NomeDia[3] = 'Quarta-feira'
+	NomeDia[4] = 'Quinta-feira'
+	NomeDia[5] = 'Sexta-feira'
+	NomeDia[6] = 'Sábado'
+	NomeMes = new CriaArray(12)
+	NomeMes[0] = 'Janeiro'
+	NomeMes[1] = 'Fevereiro'
+	NomeMes[2] = 'Março'
+	NomeMes[3] = 'Abril'
+	NomeMes[4] = 'Maio'
+	NomeMes[5] = 'Junho'
+	NomeMes[6] = 'Julho'
+	NomeMes[7] = 'Agosto'
+	NomeMes[8] = 'Setembro'
+	NomeMes[9] = 'Outubro'
+	NomeMes[10] = 'Novembro'
+	NomeMes[11] = 'Dezembro'
+</script>
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a style="background-color: white"  class="sidebar-brand d-flex align-items-center justify-content-center" href=" index.php">
-                <div class="sidebar-brand-icon mx-3"><img src=" img/logo.svg" class="img-profile" width="80%" height="80%"></div>
+            <a style="background-color: white" class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+                <div class="sidebar-brand-icon mx-3" ><img src="./img/logo.svg" class="img-profile" width="80%" height="80%"></div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href=" index.php">
+                <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Painel Controle</span></a>
             </li>
@@ -39,7 +75,7 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Relatorios</h6>
-                        <a class="collapse-item" href=" relatorios/gerarRelatorio.php">Gerar Relatorio</a>
+                        <a class="collapse-item" href="relatorios/gerarRelatorio.php">Gerar Relatorio</a>
                     </div>
                 </div>
             </li>
@@ -52,9 +88,9 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Cadastrar</h6>
-                        <a class="collapse-item" href=" cadastros/cadastroMaquinas.php">Maquinas</a>
-                        <a class="collapse-item" href=" cadastros/cadastroSetor.php">Setor</a>
-                        <a class="collapse-item" href=" cadastros/cadastroUser.php">Usuarios</a>
+                        <a class="collapse-item" href="cadastros/cadastroMaquinas.php">Maquinas</a>
+                        <a class="collapse-item" href="cadastros/cadastroSetor.php">Setor</a>
+                        <a class="collapse-item" href="cadastros/cadastroUser.php">Usuarios</a>
                     </div>
                 </div>
             </li>
@@ -66,9 +102,9 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                 <div id="collapseUtilitiess" class="collapse" aria-labelledby="headingUtilitiess" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Exibir</h6>
-                        <a class="collapse-item" href=" exibir/exibirMaquinas.php">Maquinas</a>
-                        <a class="collapse-item" href=" exibir/exibirSetores.php">Setor</a>
-                        <a class="collapse-item" href=" exibir/exibirUsuarios.php">Usuarios</a>
+                        <a class="collapse-item" href="exibir/exibirMaquinas.php">Maquinas</a>
+                        <a class="collapse-item" href="exibir/exibirSetores.php">Setor</a>
+                        <a class="collapse-item" href="exibir/exibirUsuarios.php">Usuarios</a>
                     </div>
                 </div>
             </li>
@@ -127,10 +163,12 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
+                            
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <script class="text-success">document.write (NomeDia[dias] + ', ' + dia + ' de ' + NomeMes[mes] + ' de ' + wyear)</script> | &nbsp;
                                 <span class="mr-1 d-none d-lg-inline text-gray-800 small"><strong>Bem Vindo, <?php echo $usuarioLogado['nome'] ?></strong></span></a></strong>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="perfil.php">
                                     <i class="fas fa-user fa-sm fa-fw  text-gray-400"></i>
                                     Perfil
                                 </a>

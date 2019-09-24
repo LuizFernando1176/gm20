@@ -21,13 +21,49 @@ $rowRack = mysqli_fetch_assoc($queryRack);
 $rowSetor = mysqli_fetch_assoc($querySetor);
 ?>
 
-<body id="page-top">
+<body id="page-top" onload="mostrarAlerta(<?php echo $indice ?>);">
     <!-- Page Wrapper -->
+    <script language=JavaScript>
+	hoje = new Date()
+	dia = hoje.getDate()
+	dias = hoje.getDay()
+	mes = hoje.getMonth()
+	function y2k(number) {
+		return (number < 1000) ? number + 1900 : number;
+	}
+	wyear = y2k(hoje.getYear())
+	ano = hoje.getYear()
+	if (dia < 10)
+		dia = '0' + dia
+	function CriaArray (n) {
+		this.length = n }
+	NomeDia = new CriaArray(7)
+	NomeDia[0] = 'Domingo'
+	NomeDia[1] = 'Segunda-feira'
+	NomeDia[2] = 'Terça-feira'
+	NomeDia[3] = 'Quarta-feira'
+	NomeDia[4] = 'Quinta-feira'
+	NomeDia[5] = 'Sexta-feira'
+	NomeDia[6] = 'Sábado'
+	NomeMes = new CriaArray(12)
+	NomeMes[0] = 'Janeiro'
+	NomeMes[1] = 'Fevereiro'
+	NomeMes[2] = 'Março'
+	NomeMes[3] = 'Abril'
+	NomeMes[4] = 'Maio'
+	NomeMes[5] = 'Junho'
+	NomeMes[6] = 'Julho'
+	NomeMes[7] = 'Agosto'
+	NomeMes[8] = 'Setembro'
+	NomeMes[9] = 'Outubro'
+	NomeMes[10] = 'Novembro'
+	NomeMes[11] = 'Dezembro'
+</script>
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a style="background-color: white"  class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
-                <div class="sidebar-brand-icon mx-3"><img src="../img/logo.svg" class="img-profile" width="80%" height="80%"></div>
+            <a style="background-color: white" class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+                <div class="sidebar-brand-icon mx-3" ><img src="../img/logo.svg" class="img-profile" width="80%" height="80%"></div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -140,7 +176,9 @@ $rowSetor = mysqli_fetch_assoc($querySetor);
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
+                            
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <script class="text-success">document.write (NomeDia[dias] + ', ' + dia + ' de ' + NomeMes[mes] + ' de ' + wyear)</script> | &nbsp;
                                 <span class="mr-1 d-none d-lg-inline text-gray-800 small"><strong>Bem Vindo, <?php echo $usuarioLogado['nome'] ?></strong></span></a></strong>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="../perfil.php">
@@ -152,7 +190,7 @@ $rowSetor = mysqli_fetch_assoc($querySetor);
                                     Configurações 
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="../sair.php" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Sair
                                 </a>

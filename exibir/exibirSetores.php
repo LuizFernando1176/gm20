@@ -1,27 +1,70 @@
 <?php
 include_once '../util/conecaoBD.php';
 include_once '../util/corpo.php';
+$numreg = 5; // Quantos registros por página vai ser mostrado
+$pg = isset($_GET["pag"]) ? $_GET["pag"] : 1;
+$inicial = ($pg * $numreg) - $numreg;
+// Serve para contar quantos registros você tem na sua tabela para fazer a paginação
 $coon = conectar();
-cabeca();
-$query01 = "SELECT * FROM `setor` WHERE 1 ";
-$queryRack = mysqli_query($coon, $query01);
+$totalProdutos = mysqli_query($coon, "select COUNT(id) total FROM setor");
+$totalProduto = mysqli_fetch_assoc($totalProdutos);
+$countTotal = $totalProduto['total'];
+// Faz o Select pegando o registro inicial até a quantidade de registros para página
+$sql = mysqli_query($coon, "SELECT id , setor FROM setor ORDER BY setor ASC LIMIT $inicial, $numreg");
 $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 if ($usuarioLogado['nivel'] == '1') {
 
-   header('Location:../index.php?alerta=12');
+    header('Location:../index.php?alerta=12');
 } else {
     
 }
+cabeca();
 ?>
 
 
 <body id="page-top" onload="mostrarAlerta(<?php echo $indice ?>);">
     <!-- Page Wrapper -->
+    <script language=JavaScript>
+	hoje = new Date()
+	dia = hoje.getDate()
+	dias = hoje.getDay()
+	mes = hoje.getMonth()
+	function y2k(number) {
+		return (number < 1000) ? number + 1900 : number;
+	}
+	wyear = y2k(hoje.getYear())
+	ano = hoje.getYear()
+	if (dia < 10)
+		dia = '0' + dia
+	function CriaArray (n) {
+		this.length = n }
+	NomeDia = new CriaArray(7)
+	NomeDia[0] = 'Domingo'
+	NomeDia[1] = 'Segunda-feira'
+	NomeDia[2] = 'Terça-feira'
+	NomeDia[3] = 'Quarta-feira'
+	NomeDia[4] = 'Quinta-feira'
+	NomeDia[5] = 'Sexta-feira'
+	NomeDia[6] = 'Sábado'
+	NomeMes = new CriaArray(12)
+	NomeMes[0] = 'Janeiro'
+	NomeMes[1] = 'Fevereiro'
+	NomeMes[2] = 'Março'
+	NomeMes[3] = 'Abril'
+	NomeMes[4] = 'Maio'
+	NomeMes[5] = 'Junho'
+	NomeMes[6] = 'Julho'
+	NomeMes[7] = 'Agosto'
+	NomeMes[8] = 'Setembro'
+	NomeMes[9] = 'Outubro'
+	NomeMes[10] = 'Novembro'
+	NomeMes[11] = 'Dezembro'
+</script>
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a style="background-color: white"  class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
-                <div class="sidebar-brand-icon mx-3"><img src="../img/logo.svg" class="img-profile" width="80%" height="80%"></div>
+            <a style="background-color: white" class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+                <div class="sidebar-brand-icon mx-3" ><img src="../img/logo.svg" class="img-profile" width="80%" height="80%"></div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -134,7 +177,9 @@ if ($usuarioLogado['nivel'] == '1') {
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
+                            
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <script class="text-success">document.write (NomeDia[dias] + ', ' + dia + ' de ' + NomeMes[mes] + ' de ' + wyear)</script> | &nbsp;
                                 <span class="mr-1 d-none d-lg-inline text-gray-800 small"><strong>Bem Vindo, <?php echo $usuarioLogado['nome'] ?></strong></span></a></strong>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="../perfil.php">
@@ -146,7 +191,7 @@ if ($usuarioLogado['nivel'] == '1') {
                                     Configurações 
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="../sair.php" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Sair
                                 </a>
@@ -184,31 +229,28 @@ if ($usuarioLogado['nivel'] == '1') {
                                             </tr>
                                         </thead>
                                         <tbody>
-<?php
-while ($queryRacks = mysqli_fetch_assoc($queryRack)) {
-    echo "<tr>";
-    echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
-    echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarSetor.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-    echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarSetor.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
-} echo "</tr>";
-?>
-
+                                            <?php
+                                            while ($rows = mysqli_fetch_array($sql)) {
+                                                echo "<tr>";
+                                                echo "<td >" . utf8_encode($rows['setor']) . "</td>";
+                                                echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarSetor.php?id=" . $rows['id'] . "'>Editar</a></button>" . "</td>";
+                                                echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarSetor.php?id=" . $rows['id'] . "'>Deletar</a></button>" . "</td>";
+                                            } echo "</tr>";
+                                            ?>
                                         </tbody>
                                     </table>
-
-
-
+                                    <script src = "../js/script.js" type = "text/javascript"></script>
                                 </div></center>
-
-                                <script src="../js/script.js" type="text/javascript"></script>
-
-
-
-
-                                <!-- Pie Chart -->
+                                <?php
+                                if ($countTotal > $numreg) {
+                                    echo '<center><div class="pagination pagination-lg" style="width: max-content">';
+                                    include '../util/paginacaoSetor.php'; // chamada do arquivo. ex: << Anterior 1 2 3 4 5 Próxima >>
+                                    echo '</div></center>';
+                                }
+                                ?><!-- Pie Chart -->
 
                                 <!-- Content Row -->
-                                <div class="row">
+                                <div class="row" >
                                     <!-- Content Column -->
                                     <div class="col-lg-6 mb-4">
 
@@ -231,5 +273,6 @@ while ($queryRacks = mysqli_fetch_assoc($queryRack)) {
                                                 </div>
                                             </div>
                                         </div>
-<?php
-rodape();
+                                        <?php
+                                        rodape();
+                                        
