@@ -42,9 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     <span aria-hidden='true'>&times;</span>
   </button></div>";
             break;
-        case '10': echo "<div class='alert alert-danger alert-dismissible fade show'>Login e/ou senha inv&aacute;lidos !<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-    <span aria-hidden='true'>&times;</span>
-  </button></div>";
+        case '10': echo "<div class='alert alert-danger  fade show'>Login e/ou senha Invalidos !
+  </div>";
             break;
         case '11': echo "<div class='alert alert-success alert-dismissible fade show'>Senha alterada com sucesso !<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
     <span aria-hidden='true'>&times;</span>

@@ -1,10 +1,18 @@
 <?php
 include_once '../util/conecaoBD.php';
 include_once '../util/corpo.php';
+$numreg = 5; // Quantos registros por página vai ser mostrado
+$pg = isset($_GET["pag"]) ? $_GET["pag"] : 1;
+$inicial = ($pg * $numreg) - $numreg;
+// Serve para contar quantos registros você tem na sua tabela para fazer a paginação
+$coon = conectar();
+$totalMaquinas = mysqli_query($coon, "select COUNT(id) total FROM maquina");
+$totalMaquina = mysqli_fetch_assoc($totalMaquinas);
+$countTotal = $totalMaquina['total'];
+// Faz o Select pegando o registro inicial até a quantidade de registros para página
+$sql = mysqli_query($coon, "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id  LIMIT $inicial, $numreg");
 $coon = conectar();
 cabeca();
-$query01 = "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id ORDER BY id DESC";
-$queryRack = mysqli_query($coon, $query01);
 $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 ?>
 
@@ -239,23 +247,23 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 
                                             <tbody>
                                                 <?php
-                                                while ($queryRacks = mysqli_fetch_assoc($queryRack)) {
+                                                while ($rows = mysqli_fetch_array($sql)) {
                                                     echo "<tr>";
-                                                    echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
-                                                    echo "<td >" . $queryRacks['nome_usuario'] . "</td>";
-                                                    echo "<td >" . $queryRacks['nome_maquina'] . "</td>";
-                                                    echo "<td >" . utf8_encode($queryRacks['inv']) . "</td>";
-                                                    echo "<td >" . utf8_encode($queryRacks['tombo']) . "</td>";
-                                                    echo "<td >" . $queryRacks['mac'] . "</td>";
-                                                    echo "<td >" . $queryRacks['ponto'] . "</td>";
-                                                    echo "<td >" . $queryRacks['rack'] . "</td>";
-                                                    echo "<td >" . utf8_encode($queryRacks['sw']) . "</td>";
-                                                    echo "<td >" . utf8_encode($queryRacks['barramento']) . "</td>";
-                                                    echo "<td >" . "<button class='btn btn-info'><a href='../view/visualizarMaquina.php?id=" . $queryRacks['id'] . "'>Imprimir</a></button>" . "</td>";
+                                                    echo "<td >" . utf8_encode($rows['setor']) . "</td>";
+                                                    echo "<td >" . $rows['nome_usuario'] . "</td>";
+                                                    echo "<td >" . $rows['nome_maquina'] . "</td>";
+                                                    echo "<td >" . utf8_encode($rows['inv']) . "</td>";
+                                                    echo "<td >" . utf8_encode($rows['tombo']) . "</td>";
+                                                    echo "<td >" . $rows['mac'] . "</td>";
+                                                    echo "<td >" . $rows['ponto'] . "</td>";
+                                                    echo "<td >" . $rows['rack'] . "</td>";
+                                                    echo "<td >" . utf8_encode($rows['sw']) . "</td>";
+                                                    echo "<td >" . utf8_encode($rows['barramento']) . "</td>";
+                                                    echo "<td >" . "<button class='btn btn-info'><a href='../view/visualizarMaquina.php?id=" . $rows['id'] . "'>Imprimir</a></button>" . "</td>";
                                                     if ($usuarioLogado['nivel'] == '2') {
-                                                        echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
+                                                        echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarMaquina.php?id=" . $rows['id'] . "'>Editar</a></button>" . "</td>";
 
-                                                        echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+                                                        echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarMaquina.php?id=" . $rows['id'] . "'>Deletar</a></button>" . "</td>";
                                                     }
                                                     echo "</tr>";
                                                 }
@@ -264,10 +272,19 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                                             </tbody>
 
                                         </table>
+                                         <script src = "../js/script.js" type = "text/javascript"></script>
+                                </div></center>
+                                <?php
+                                if ($countTotal > $numreg) {
+                                    echo '<center><div class="pagination pagination-lg" style="width: max-content">';
+                                    include '../util/paginacaoMaquina.php'; // chamada do arquivo. ex: << Anterior 1 2 3 4 5 Próxima >>
+                                    echo '</div></center>';
+                                }
+                                ?>
 
                                 </div></center>
 
-                                <script src="../js/script.js" type="text/javascript"></script>
+                               
 
 
 

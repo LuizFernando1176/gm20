@@ -2,7 +2,7 @@
 $quant_pg = $countTotal/$numreg;
 $quant_pg++;
 //$url_ant = "http://www.site.com.br/produtos/";
-$url_ant = 'teste01.php?pag='; 
+$url_ant = 'exibirMaquinas.php?pag='; 
 // anterior  
 if ( $pg > 1) {
    echo "<a href=".$url_ant.($pg-1) ."><span class='text-info'>Anterior</span></a>&nbsp;";
