@@ -1,39 +1,31 @@
-<script language=JavaScript>
-	hoje = new Date()
-	dia = hoje.getDate()
-	dias = hoje.getDay()
-	mes = hoje.getMonth()
-	function y2k(number) {
-		return (number < 1000) ? number + 1900 : number;
-	}
-	wyear = y2k(hoje.getYear())
-	ano = hoje.getYear()
-	if (dia < 10)
-		dia = '0' + dia
-	function CriaArray (n) {
-		this.length = n }
-	NomeDia = new CriaArray(7)
-	NomeDia[0] = 'Domingo'
-	NomeDia[1] = 'Segunda-feira'
-	NomeDia[2] = 'Terça-feira'
-	NomeDia[3] = 'Quarta-feira'
-	NomeDia[4] = 'Quinta-feira'
-	NomeDia[5] = 'Sexta-feira'
-	NomeDia[6] = 'Sábado'
-	NomeMes = new CriaArray(12)
-	NomeMes[0] = 'Janeiro'
-	NomeMes[1] = 'Fevereiro'
-	NomeMes[2] = 'Março'
-	NomeMes[3] = 'Abril'
-	NomeMes[4] = 'Maio'
-	NomeMes[5] = 'Junho'
-	NomeMes[6] = 'Julho'
-	NomeMes[7] = 'Agosto'
-	NomeMes[8] = 'Setembro'
-	NomeMes[9] = 'Outubro'
-	NomeMes[10] = 'Novembro'
-	NomeMes[11] = 'Dezembro'
-</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Auto Complete</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+        <script type="text/javascript">
+            $(document).ready(function () {
 
+                // Captura o retorno do retornaCliente.php
+                $.getJSON('retornaCliente.php', function (data) {
+                    var setor = [''];
 
-<script>document.write (NomeDia[dias] + ', ' + dia + ' de ' + NomeMes[mes] + ' de ' + wyear)</script>
+                    // Armazena na array capturando somente o nome do cliente
+                    $(data).each(function (key, value) {
+                       setor.push(value.setor);
+                    });
+
+                    // Chamo o Auto complete do JQuery ui setando o id do input, array com os dados e o mínimo de caracteres para disparar o AutoComplete
+                    $('#txtSetor').autocomplete({source: setor, minLength: 1});
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <label>Cliente:</label>
+        <input type="text" id="txtSetor" name="txtSetor" size="60"/>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/jquery-ui.js" type="text/javascript"></script>
+    </body>
+</html>

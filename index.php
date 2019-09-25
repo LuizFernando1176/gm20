@@ -15,46 +15,47 @@ $query03 = "SELECT count(id) AS total FROM usuario";
 $totalQuery03 = mysqli_query($coon, $query03);
 $totalQuery003 = mysqli_fetch_assoc($totalQuery03);
 cabeca();
-$indice = isset($_GET['alerta'])? $_GET['alerta'] : null;
+$indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 ?>
 <body id="page-top" onload="mostrarAlerta(<?php echo $indice ?>);">
     <!-- Page Wrapper -->
     <script language=JavaScript>
-	hoje = new Date()
-	dia = hoje.getDate()
-	dias = hoje.getDay()
-	mes = hoje.getMonth()
-	function y2k(number) {
-		return (number < 1000) ? number + 1900 : number;
-	}
-	wyear = y2k(hoje.getYear())
-	ano = hoje.getYear()
-	if (dia < 10)
-		dia = '0' + dia
-	function CriaArray (n) {
-		this.length = n }
-	NomeDia = new CriaArray(7)
-	NomeDia[0] = 'Domingo'
-	NomeDia[1] = 'Segunda-feira'
-	NomeDia[2] = 'Terça-feira'
-	NomeDia[3] = 'Quarta-feira'
-	NomeDia[4] = 'Quinta-feira'
-	NomeDia[5] = 'Sexta-feira'
-	NomeDia[6] = 'Sábado'
-	NomeMes = new CriaArray(12)
-	NomeMes[0] = 'Janeiro'
-	NomeMes[1] = 'Fevereiro'
-	NomeMes[2] = 'Março'
-	NomeMes[3] = 'Abril'
-	NomeMes[4] = 'Maio'
-	NomeMes[5] = 'Junho'
-	NomeMes[6] = 'Julho'
-	NomeMes[7] = 'Agosto'
-	NomeMes[8] = 'Setembro'
-	NomeMes[9] = 'Outubro'
-	NomeMes[10] = 'Novembro'
-	NomeMes[11] = 'Dezembro'
-</script>
+        hoje = new Date()
+        dia = hoje.getDate()
+        dias = hoje.getDay()
+        mes = hoje.getMonth()
+        function y2k(number) {
+            return (number < 1000) ? number + 1900 : number;
+        }
+        wyear = y2k(hoje.getYear())
+        ano = hoje.getYear()
+        if (dia < 10)
+            dia = '0' + dia
+        function CriaArray(n) {
+            this.length = n
+        }
+        NomeDia = new CriaArray(7)
+        NomeDia[0] = 'Domingo'
+        NomeDia[1] = 'Segunda-feira'
+        NomeDia[2] = 'Terça-feira'
+        NomeDia[3] = 'Quarta-feira'
+        NomeDia[4] = 'Quinta-feira'
+        NomeDia[5] = 'Sexta-feira'
+        NomeDia[6] = 'Sábado'
+        NomeMes = new CriaArray(12)
+        NomeMes[0] = 'Janeiro'
+        NomeMes[1] = 'Fevereiro'
+        NomeMes[2] = 'Março'
+        NomeMes[3] = 'Abril'
+        NomeMes[4] = 'Maio'
+        NomeMes[5] = 'Junho'
+        NomeMes[6] = 'Julho'
+        NomeMes[7] = 'Agosto'
+        NomeMes[8] = 'Setembro'
+        NomeMes[9] = 'Outubro'
+        NomeMes[10] = 'Novembro'
+        NomeMes[11] = 'Dezembro'
+    </script>
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -139,8 +140,28 @@ $indice = isset($_GET['alerta'])? $_GET['alerta'] : null;
                     </button>
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                       <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+                       <script src="js/jquery/jquery.js" type="text/javascript"></script>
+                       <script type="text/javascript" src="js/jquery-ui.js"></script>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+
+                                // Captura o retorno do retornaMauinas.php
+                                $.getJSON('retornaMaquinas.php', function (data) {
+                                    var cliente = [];
+
+                                    // Armazena na array capturando somente o nome do cliente
+                                    $(data).each(function (key, value) {
+                                        cliente.push(value.cliente);
+                                    });
+
+                                    // Chamo o Auto complete do JQuery ui setando o id do input, array com os dados e o mínimo de caracteres para disparar o AutoComplete
+                                    $('#txtCliente').autocomplete({source: cliente, minLength: 1});
+                                });
+                            });
+                        </script>
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" id="txtCliente" name="txtCliente" size="60"/>
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -172,9 +193,9 @@ $indice = isset($_GET['alerta'])? $_GET['alerta'] : null;
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            
+
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <script class="text-success">document.write (NomeDia[dias] + ', ' + dia + ' de ' + NomeMes[mes] + ' de ' + wyear)</script> | &nbsp;
+                                <script class="text-success">document.write(NomeDia[dias] + ', ' + dia + ' de ' + NomeMes[mes] + ' de ' + wyear)</script> | &nbsp;
                                 <span class="mr-1 d-none d-lg-inline text-gray-800 small"><strong>Bem Vindo, <?php echo $usuarioLogado['nome'] ?></strong></span></a></strong>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="perfil.php">
@@ -200,7 +221,7 @@ $indice = isset($_GET['alerta'])? $_GET['alerta'] : null;
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Controle</h1>
-                          <div id="divAlerta" class="divAlerta"></div>
+                        <div id="divAlerta" class="divAlerta"></div>
                     </div>
                     <!-- Content Row -->
                     <div class="row">
@@ -289,8 +310,8 @@ $indice = isset($_GET['alerta'])? $_GET['alerta'] : null;
                                                     <th>Rack</th>
                                                     <th>Switch</th>
                                                     <th>Barramento</th>
-                                                  <?php if ($usuarioLogado['nivel'] == '2') { ?><th>Editar</th>
-                                                  <th>Excluir</th><?php }  ?>
+<?php if ($usuarioLogado['nivel'] == '2') { ?><th>Editar</th>
+                                                        <th>Excluir</th><?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -307,8 +328,10 @@ $indice = isset($_GET['alerta'])? $_GET['alerta'] : null;
                                                     echo "<td >" . $queryRacks['rack'] . "</td>";
                                                     echo "<td >" . utf8_encode($queryRacks['sw']) . "</td>";
                                                     echo "<td >" . utf8_encode($queryRacks['barramento']) . "</td>";
-                                                   if ($usuarioLogado['nivel'] == '2') { echo "<td >" . "<button class='btn btn-warning'><a href='./editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                                                    echo "<td >" . "<button class='btn btn-danger'><a href='./deletes/deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>"; } 
+                                                    if ($usuarioLogado['nivel'] == '2') {
+                                                        echo "<td >" . "<button class='btn btn-warning'><a href='./editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
+                                                        echo "<td >" . "<button class='btn btn-danger'><a href='./deletes/deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+                                                    }
                                                     echo "</tr>";
                                                 }
                                                 ?>
@@ -324,7 +347,7 @@ $indice = isset($_GET['alerta'])? $_GET['alerta'] : null;
                         <div class="row">
                             <!-- Content Column -->
                             <div class="col-lg-6 mb-4">
-<script src="js/script.js" type="text/javascript"></script>
+                                <script src="js/script.js" type="text/javascript"></script>
                                 </a>
                                 <!-- Logout Modal-->
                                 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -344,5 +367,5 @@ $indice = isset($_GET['alerta'])? $_GET['alerta'] : null;
                                         </div>
                                     </div>
                                 </div>
-                                <?php
-                                rodape();
+<?php
+rodape();
