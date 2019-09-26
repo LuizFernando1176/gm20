@@ -16,6 +16,7 @@ $totalQuery03 = mysqli_query($coon, $query03);
 $totalQuery003 = mysqli_fetch_assoc($totalQuery03);
 cabeca();
 $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
+
 ?>
 <body id="page-top" onload="mostrarAlerta(<?php echo $indice ?>);">
     <!-- Page Wrapper -->
@@ -140,25 +141,25 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                     </button>
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                       <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-                       <script src="js/jquery/jquery.js" type="text/javascript"></script>
-                       <script type="text/javascript" src="js/jquery-ui.js"></script>
+                        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+                        <script src="js/jquery/jquery.js" type="text/javascript"></script>
+                        <script type="text/javascript" src="js/jquery-ui.js"></script>
                         <script type="text/javascript">
-                            $(document).ready(function () {
+        $(document).ready(function () {
 
-                                // Captura o retorno do retornaMauinas.php
-                                $.getJSON('retornaMaquinas.php', function (data) {
-                                    var cliente = [];
+            // Captura o retorno do retornaMauinas.php
+            $.getJSON('retornaMaquinas.php', function (data) {
+                var cliente = [];
 
-                                    // Armazena na array capturando somente o nome do cliente
-                                    $(data).each(function (key, value) {
-                                        cliente.push(value.cliente);
-                                    });
+                // Armazena na array capturando somente o nome do cliente
+                $(data).each(function (key, value) {
+                    cliente.push(value.cliente);
+                });
 
-                                    // Chamo o Auto complete do JQuery ui setando o id do input, array com os dados e o mínimo de caracteres para disparar o AutoComplete
-                                    $('#txtCliente').autocomplete({source: cliente, minLength: 1});
-                                });
-                            });
+                // Chamo o Auto complete do JQuery ui setando o id do input, array com os dados e o mínimo de caracteres para disparar o AutoComplete
+                $('#txtCliente').autocomplete({source: cliente, minLength: 1});
+            });
+        });
                         </script>
                         <div class="input-group">
                             <input type="text" id="txtCliente" name="txtCliente" size="60"/>
@@ -310,7 +311,7 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                                                     <th>Rack</th>
                                                     <th>Switch</th>
                                                     <th>Barramento</th>
-<?php if ($usuarioLogado['nivel'] == '2') { ?><th>Editar</th>
+                                                    <?php if ($usuarioLogado['nivel'] == '2') { ?><th>Editar</th>
                                                         <th>Excluir</th><?php } ?>
                                                 </tr>
                                             </thead>
@@ -342,7 +343,23 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                             </div>
                         </div>
                         <!-- Pie Chart -->
+                        <script >
+                            function attLastActivity() {
+                                $.ajax({
+                                    url: 'util/last-activity.php',
+                                    type: 'GET',
+                                    data: '',
+                                    success: function (data) {
+                                        //Essa função é disparada caso a requisição dê certo, se quiser implementar alguma funcionalidade, edite aqui.
+                                    },
+                                    beforeSend: function () {
+                                        //Função disparada antes de fazer a requisição.
+                                    }
+                                });
+                            }
 
+                            setInterval(attLastActivity, 30000); //Faz uma requisição a cada 30 segundos
+                        </script>
                         <!-- Content Row -->
                         <div class="row">
                             <!-- Content Column -->
@@ -367,5 +384,6 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                                         </div>
                                     </div>
                                 </div>
-<?php
-rodape();
+                                <?php
+                                rodape();
+                                

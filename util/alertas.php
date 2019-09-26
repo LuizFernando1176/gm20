@@ -42,8 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     <span aria-hidden='true'>&times;</span>
   </button></div>";
             break;
-        case '10': echo "<div class='alert alert-danger  fade show'>Login e/ou senha Invalidos !
-  </div>";
+        case '10': echo "<div class='alert alert-danger  fade show'>Login e/ou senha Invalidos !</div>";
             break;
         case '11': echo "<div class='alert alert-success alert-dismissible fade show'>Senha alterada com sucesso !<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
     <span aria-hidden='true'>&times;</span>
@@ -55,6 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     <span aria-hidden='true'>&times;</span>
   </button>
 </div>";
+            break;
+        case '13': echo "<div class='alert alert-danger  fade show'>Você foi logado por inatividade</div>";
             break;
     }
 }

@@ -1,18 +1,14 @@
 <?php
 
+function urlbase() {
 
-
-function testaSessao() {
-    session_start();
-    if (!isset($_SESSION['gmUsuarioLogado'])) {
-        unset($_SESSION['gmUsuarioLogado']);
-               header('location:login.php');
+    if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
+        $protocol = 'https://';
+    } else {
+        $protocol = 'http://';
     }
+    $url = $protocol . $_SERVER['HTTP_HOST'] . '/gm20';
+    return $url;
 }
 
-function urlbase () {
-    
-    return $url=('/gm20');
-    
-}
 ?>
