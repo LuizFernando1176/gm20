@@ -12,7 +12,7 @@ function testaSessao() {
             header('Location:'.urlbase().'/login.php?alerta=13');
         } else {
             //Seta mais tempo 60 segundos
-            $_SESSION["sessiontime"] = time() + 5;
+            $_SESSION["sessiontime"] = time() + 500;
         }
     } else {
         session_unset();
