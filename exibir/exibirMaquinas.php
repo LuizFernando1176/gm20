@@ -10,7 +10,7 @@ $totalMaquinas = mysqli_query($coon, "select COUNT(id) total FROM maquina");
 $totalMaquina = mysqli_fetch_assoc($totalMaquinas);
 $countTotal = $totalMaquina['total'];
 // Faz o Select pegando o registro inicial até a quantidade de registros para página
-$sql = mysqli_query($coon, "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id  LIMIT $inicial, $numreg");
+$sql = mysqli_query($coon, "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id WHERE NOT m.Excluido  LIMIT $inicial, $numreg");
 $coon = conectar();
 cabeca();
 $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;

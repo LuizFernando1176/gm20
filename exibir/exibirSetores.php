@@ -10,7 +10,7 @@ $totalProdutos = mysqli_query($coon, "select COUNT(id) total FROM setor");
 $totalProduto = mysqli_fetch_assoc($totalProdutos);
 $countTotal = $totalProduto['total'];
 // Faz o Select pegando o registro inicial até a quantidade de registros para página
-$sql = mysqli_query($coon, "SELECT id , setor FROM setor ORDER BY setor ASC LIMIT $inicial, $numreg");
+$sql = mysqli_query($coon, "SELECT id , setor FROM setor WHERE  NOT Excluido ORDER BY setor ASC LIMIT $inicial, $numreg");
 $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 if ($usuarioLogado['nivel'] == '1') {
 
@@ -216,7 +216,7 @@ cabeca();
                             <div class="card shadow mb-8">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary text-center">Exibir Maquinas</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary text-center">Exibir Setores</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">

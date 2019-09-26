@@ -5,7 +5,7 @@ include_once '../util/antiInjecao.php';
 cabeca();
 retirarInjecao($id = $_GET['id']);
 $coon = conectar();
-$busca = mysqli_query($coon, "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id   WHERE m.id =$id");
+$busca = mysqli_query($coon, "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id   WHERE NOT Excluido and m.id =$id");
 $row = mysqli_fetch_assoc($busca);
 $query01 = "SELECT `id`, `rack` FROM `rack`";
 $query02 = "SELECT `id`, `setor` FROM `setor`";

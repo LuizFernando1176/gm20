@@ -9,7 +9,7 @@
 
                 // Captura o retorno do retornaCliente.php
                 $.getJSON('retornaCliente.php', function (data) {
-                    var setor = [''];
+                    var setor = [];
 
                     // Armazena na array capturando somente o nome do cliente
                     $(data).each(function (key, value) {

@@ -5,7 +5,7 @@ include_once '../util/antiInjecao.php';
 cabeca();
 retirarInjecao($id = $_GET['id']);
 $coon = conectar();
-$query02 = "SELECT `setor` FROM `setor` where id=$id";
+$query02 = "SELECT `setor` FROM `setor` WHERE NOT Excluido and id=$id";
 $query = mysqli_query($coon, $query02);
 $querySetor = mysqli_fetch_assoc($query);
 ?>

@@ -2,7 +2,7 @@
 include_once '../util/conecaoBD.php';
 include_once '../util/corpo.php';
 $coon = conectar();
-$query01 = "SELECT `id`,`login`, `senha`, `nivel` FROM `usuario` WHERE 1";
+$query01 = "SELECT `id`,`login`, `senha`, `nivel` FROM `usuario` WHERE NOT Excluido ";
 $queryRack = mysqli_query($coon, $query01);
 cabeca();
 $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;

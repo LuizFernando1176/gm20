@@ -4,7 +4,7 @@ include_once '../util/antiInjecao.php';
 
 retirarInjecao($id = $_GET['id']);
 
-$queryDeletaUser = "DELETE FROM `usuario` WHERE id ='$id'";
+$queryDeletaUser = "UPDATE usuario SET excluido = 1 WHERE id='$id'";
 $coon = conectar();
 $resultado = mysqli_query($coon, $queryDeletaUser);
 

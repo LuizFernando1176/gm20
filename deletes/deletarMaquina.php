@@ -5,7 +5,7 @@ include_once '../util/antiInjecao.php';
 
 retirarInjecao($id = $_GET['id']);
 
-$queryDeletaMaquina = "DELETE FROM `maquina` WHERE id ='$id'";
+$queryDeletaMaquina = "UPDATE maquina SET excluido = 1 WHERE id='$id'";
 $coon = conectar();
 $resultado = mysqli_query($coon, $queryDeletaMaquina);
 
