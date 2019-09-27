@@ -13,8 +13,7 @@ $resultado = mysqli_query($coon, $queryDeletaSetor);
 
 if ($resultado) {
 
- header('Location:../exibir/exibirSetores.php?alerta=4');
-   
+    header('Location:../exibir/exibirSetores.php?alerta=4');
 } else {
 
     echo 'Erro a cadastra Maquina ';

@@ -13,8 +13,7 @@ $resultado = mysqli_query($coon, $queryDeletaMaquina);
 
 if ($resultado) {
 
-header('Location:../exibir/exibirMaquinas.php?alerta=2');
-    
+    header('Location:../exibir/exibirMaquinas.php?alerta=2');
 } else {
 
     echo 'Erro a cadastra usuario ';

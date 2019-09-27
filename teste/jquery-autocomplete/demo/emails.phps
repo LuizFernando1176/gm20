@@ -1,4 +1,5 @@
 <?php
+
 $q = strtolower($_GET["q"]);
 if (!$q) return;
 $items = array(

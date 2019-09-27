@@ -21,7 +21,7 @@ $resultado = mysqli_query($coon, $queryMaquinas);
 
 if ($resultado) {
 
-header('Location:../exibir/exibirMaquinas.php?alerta=1');
+    header('Location:../exibir/exibirMaquinas.php?alerta=1');
 } else {
 
     echo 'Erro a cadastra maquina ';

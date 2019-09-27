@@ -21,27 +21,27 @@ $rowRack = mysqli_fetch_assoc($queryRack);
 $rowSetor = mysqli_fetch_assoc($querySetor);
 ?>
 <div class="container">
-    
+
     <div class="card" style="width: max-content;margin-top: 5%;padding: 1%">
-    <div class="card-header">Informações da Maquina <?php echo $row['nome_maquina']; ?></div>
-    <div class="card-body">
-        <input type="hidden" value="<?php echo $id; ?>" name="id" />
-        <p>Setor : <strong><?php echo $row['setor'] ?></strong></p>
-        <p>N. do Usuário: <strong><?php echo $row['nome_usuario']; ?></strong></p>
-        <p>N. da Máquina: <strong><?php echo $row['nome_maquina']; ?></strong></p> 
-        <p>INV: <strong><?php echo $row['inv'] ?></strong></p> 
-        <p>Tombo: <strong><?php echo $row['tombo'] ?></strong></p> 
-        <p>MAC: <strong><?php echo $row['mac']; ?> </strong></p> 
-        <p>Ponto: <strong><?php echo $row['ponto']; ?></strong></p>  
-        <p>Rack:<strong> <?php echo $rowRack['rack']; ?></strong></p> 
-        <p>Sw: <strong><?php echo $rowSw['sw']; ?></strong></p> 
-        <p>Barram.: <strong><?php echo $rowBarramento['barramento']; ?></p> 
-        <center><button class='btn btn-success'value='Print this page' onClick='window.print()'>Imprimir</button>
-            <button class="btn btn-dark"><a href="../exibir/exibirMaquinas.php">Voltar</a></button></center>
+        <div class="card-header">Informações da Maquina <?php echo $row['nome_maquina']; ?></div>
+        <div class="card-body">
+            <input type="hidden" value="<?php echo $id; ?>" name="id" />
+            <p>Setor : <strong><?php echo $row['setor'] ?></strong></p>
+            <p>N. do Usuário: <strong><?php echo $row['nome_usuario']; ?></strong></p>
+            <p>N. da Máquina: <strong><?php echo $row['nome_maquina']; ?></strong></p> 
+            <p>INV: <strong><?php echo $row['inv'] ?></strong></p> 
+            <p>Tombo: <strong><?php echo $row['tombo'] ?></strong></p> 
+            <p>MAC: <strong><?php echo $row['mac']; ?> </strong></p> 
+            <p>Ponto: <strong><?php echo $row['ponto']; ?></strong></p>  
+            <p>Rack:<strong> <?php echo $rowRack['rack']; ?></strong></p> 
+            <p>Sw: <strong><?php echo $rowSw['sw']; ?></strong></p> 
+            <p>Barram.: <strong><?php echo $rowBarramento['barramento']; ?></p> 
+            <center><button class='btn btn-success'value='Print this page' onClick='window.print()'>Imprimir</button>
+                <button class="btn btn-dark"><a href="../exibir/exibirMaquinas.php">Voltar</a></button></center>
+        </div>
+
     </div>
 
-</div>
-    
 </div>
 <?php
 rodape();

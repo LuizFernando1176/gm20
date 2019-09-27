@@ -1,4 +1,5 @@
 <?php
+
 include_once '../util/conecaoBD.php';
 include_once '../util/antiInjecao.php';
 retirarInjecao($id = $_POST['id']);
@@ -10,8 +11,8 @@ $resultado = $queryCadastroSetor;
 
 
 if ($resultado > 0) {
-header('Location:../perfil.php?alerta=11');
-   } else {
+    header('Location:../perfil.php?alerta=11');
+} else {
 
     echo 'Erro a editar usuario ';
 }

@@ -1,18 +1,17 @@
 <?php
-
 include_once './util/corpoLogin.php';
-$indice = isset($_GET['alerta'])? $_GET['alerta'] : null;
+$indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 cabeca();
 ?>
 <style>.card{
         opacity: 0.8;
     }
 </style>
- 
-<body onload="mostrarAlerta(<?php echo $indice?>);" background="img/olinda.jpg"   >
-    
+
+<body onload="mostrarAlerta(<?php echo $indice ?>);" background="img/olinda.jpg"   >
+
     <div class="container">
-         
+
         <div class="row justify-content-center my-5 "><br>
             <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg ">
@@ -26,14 +25,14 @@ cabeca();
                                             <div class="col-md-12 col-sm-8"> <br><BR> 
                                                 <h4 class="">Login</h4>
                                                 <hr>
-                                               <div id="divAlerta" class="divAlerta"></div>
+                                                <div id="divAlerta" class="divAlerta"></div>
                                                 <p class="text-success text-center">Faça o login , para acessa o sistema.</p>
                                                 <form method="post" action="inserts/insteLogin.php">
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                            
+
                                                             <div class="input-group-prepend">
-                                                                
+
                                                                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                                             </div>
                                                             <input name="login" class="form-control" placeholder="login" type="text">

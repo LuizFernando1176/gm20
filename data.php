@@ -13,7 +13,7 @@
 
                     // Armazena na array capturando somente o nome do cliente
                     $(data).each(function (key, value) {
-                       setor.push(value.setor);
+                        setor.push(value.setor);
                     });
 
                     // Chamo o Auto complete do JQuery ui setando o id do input, array com os dados e o mínimo de caracteres para disparar o AutoComplete

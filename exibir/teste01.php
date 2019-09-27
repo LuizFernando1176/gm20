@@ -12,7 +12,6 @@ $countTotal = $totalProduto['total'];
 // Faz o Select pegando o registro inicial até a quantidade de registros para página
 $sql = mysqli_query($coon, "SELECT id , setor FROM setor ORDER BY setor ASC LIMIT $inicial, $numreg");
 cabeca();
-
 ?>
 <div class="card-body">
     <table class="table table-striped table-responsive" >
@@ -26,22 +25,20 @@ cabeca();
         <tbody>
             <?php
             while ($rows = mysqli_fetch_array($sql)) {
-            echo "<tr>";
-            echo "<td >" . utf8_encode($rows['setor']) . "</td>";
-            echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarSetor.php?id=" . $rows['id'] . "'>Editar</a></button>" . "</td>";
-            echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarSetor.php?id=" . $rows['id'] . "'>Deletar</a></button>" . "</td>";
+                echo "<tr>";
+                echo "<td >" . utf8_encode($rows['setor']) . "</td>";
+                echo "<td >" . "<button class='btn btn-warning'><a href='../editar/editarSetor.php?id=" . $rows['id'] . "'>Editar</a></button>" . "</td>";
+                echo "<td >" . "<button class='btn btn-danger'><a href='../deletes/deletarSetor.php?id=" . $rows['id'] . "'>Deletar</a></button>" . "</td>";
             } echo "</tr>";
             ?>
         </tbody>
     </table>
     <?php
-
     echo "<br><br>"; // quebra de linha entre a paginação e o conteúdo
     // aqui uma pequena mudança no código do wolfphw
     // a paginação só exibida quando o total de produtos for maior
     // que a quantidade de registros por página
     if ($countTotal > $numreg) {
-    include '../util/paginacao_1.php'; // chamada do arquivo. ex: << Anterior 1 2 3 4 5 Próxima >>
+        include '../util/paginacao_1.php'; // chamada do arquivo. ex: << Anterior 1 2 3 4 5 Próxima >>
     }
-    
     ?>

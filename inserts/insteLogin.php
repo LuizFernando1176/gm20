@@ -32,8 +32,8 @@ if (mysqli_num_rows($select) > 0) {
     $_SESSION ['senha'] = $senha;
     $_SESSION ['id'] = $id;
     $_SESSION["sessiontime"] = time() + 60;
-    
-    
+
+
 
     header('Location:../index.php');
 } else {

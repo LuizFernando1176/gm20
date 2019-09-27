@@ -11,43 +11,43 @@ select,input,textarea{font:99% arial,helvetica,clean,sans-serif}
 pre,code{font:115% monospace;font-size:100%}
 body * {line-height:1.22em}
 body {
-	color: #202020;
+    color: #202020;
 }
 
 h1 {
-	color: #fff;
-	background: #06b;
-	padding: 10px;
-	font-size: 200%;
+    color: #fff;
+    background: #06b;
+    padding: 10px;
+    font-size: 200%;
 }
 
 h2 {
-	color: #000;
-	font-size: 150%;
-	padding: 10px 0;
+    color: #000;
+    font-size: 150%;
+    padding: 10px 0;
 }
 
 h3 {
-	color: #000;
-	font-size: 120%;
-	padding: 10px 0;
+    color: #000;
+    font-size: 120%;
+    padding: 10px 0;
 }
 
 ul {
-	list-style: disc inside;
-	margin-left: 1em;
+    list-style: disc inside;
+    margin-left: 1em;
 }
 
 #content {
-	padding: 10px;
+    padding: 10px;
 }
 
 label {
-	float: left;
-	width: 12em;
+    float: left;
+    width: 12em;
 }
 input[type=text] { width: 15em; }
 
 #banner { padding: 15px; background-color: #06b; color: white; font-size: large; border-bottom: 1px solid #ccc;
-    background: url(bg.gif) repeat-x; text-align: center }
+          background: url(bg.gif) repeat-x; text-align: center }
 #banner a { color: white; }

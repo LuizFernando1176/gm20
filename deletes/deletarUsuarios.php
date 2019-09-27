@@ -1,4 +1,5 @@
 <?php
+
 include_once '../util/conecaoBD.php';
 include_once '../util/antiInjecao.php';
 
@@ -12,7 +13,7 @@ $resultado = mysqli_query($coon, $queryDeletaUser);
 
 if ($resultado) {
 
-  header('Location:../exibir/exibirUsuarios.php?alerta=7');
+    header('Location:../exibir/exibirUsuarios.php?alerta=7');
 } else {
 
     echo 'Erroao delatar Usuario ';
