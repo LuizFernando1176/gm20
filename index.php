@@ -25,9 +25,9 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-         
+
         <h1 class="h3 mb-0 text-gray-800">Controle</h1>
-       <div id="divAlerta" class="divAlerta"></div>
+        <div id="divAlerta" class="divAlerta"></div>
     </div>
     <!-- Content Row -->
     <div class="row">
@@ -91,6 +91,7 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                    
                     <?php
                     $coon = conectar();
                     $query01 = "select m.id , m.nome_maquina , m.nome_usuario , r.rack ,s.setor, m.ponto , m.mac , m.inv ,m.tombo , w.sw , b.barramento from maquina m join rack r on m.id_rack = r.id join setor s on m.id_setor = s.id join switch w on m.id_sw = w.id join barramento b on m.id_barramento = b.id ";
@@ -104,47 +105,48 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
                     </style>
                     <div   >
                         
-                      
-                        <table class="table table-striped table-responsive" >
-                            <thead>
-                                <tr>
-                                    <th>Setor</th>
-                                    <th>N. do Usuário</th>
-                                    <th>N. da Máquina</th>
-                                    <th>INV</th>
-                                    <th>Tombo</th>
-                                    <th>MAC</th>
-                                    <th>Ponto</th>
-                                    <th>Rack</th>
-                                    <th>Switch</th>
-                                    <th>Barramento</th>
-                                    <?php if ($usuarioLogado['nivel'] == '2') { ?><th>Editar</th>
-                                        <th>Excluir</th><?php } ?>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                while ($queryRacks = mysqli_fetch_assoc($queryRack)) {
-                                    echo "<tr>";
-                                    echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
-                                    echo "<td >" . $queryRacks['nome_usuario'] . "</td>";
-                                    echo "<td >" . $queryRacks['nome_maquina'] . "</td>";
-                                    echo "<td >" . utf8_encode($queryRacks['inv']) . "</td>";
-                                    echo "<td >" . utf8_encode($queryRacks['tombo']) . "</td>";
-                                    echo "<td >" . $queryRacks['mac'] . "</td>";
-                                    echo "<td >" . $queryRacks['ponto'] . "</td>";
-                                    echo "<td >" . $queryRacks['rack'] . "</td>";
-                                    echo "<td >" . utf8_encode($queryRacks['sw']) . "</td>";
-                                    echo "<td >" . utf8_encode($queryRacks['barramento']) . "</td>";
-                                    if ($usuarioLogado['nivel'] == '2') {
-                                        echo "<td >" . "<button class='btn btn-warning'><a href='./editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
-                                        echo "<td >" . "<button class='btn btn-danger'><a href='./deletes/deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+                                </div>
+                            </div>
+                            <table class="table table-striped table-responsive" >
+                                <thead>
+                                    <tr>
+                                        <th>Setor</th>
+                                        <th>N. do Usuário</th>
+                                        <th>N. da Máquina</th>
+                                        <th>INV</th>
+                                        <th>Tombo</th>
+                                        <th>MAC</th>
+                                        <th>Ponto</th>
+                                        <th>Rack</th>
+                                        <th>Switch</th>
+                                        <th>Barramento</th>
+                                        <?php if ($usuarioLogado['nivel'] == '2') { ?><th>Editar</th>
+                                            <th>Excluir</th><?php } ?>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($queryRacks = mysqli_fetch_assoc($queryRack)) {
+                                        echo "<tr>";
+                                        echo "<td >" . utf8_encode($queryRacks['setor']) . "</td>";
+                                        echo "<td >" . $queryRacks['nome_usuario'] . "</td>";
+                                        echo "<td >" . $queryRacks['nome_maquina'] . "</td>";
+                                        echo "<td >" . utf8_encode($queryRacks['inv']) . "</td>";
+                                        echo "<td >" . utf8_encode($queryRacks['tombo']) . "</td>";
+                                        echo "<td >" . $queryRacks['mac'] . "</td>";
+                                        echo "<td >" . $queryRacks['ponto'] . "</td>";
+                                        echo "<td >" . $queryRacks['rack'] . "</td>";
+                                        echo "<td >" . utf8_encode($queryRacks['sw']) . "</td>";
+                                        echo "<td >" . utf8_encode($queryRacks['barramento']) . "</td>";
+                                        if ($usuarioLogado['nivel'] == '2') {
+                                            echo "<td >" . "<button class='btn btn-warning'><a href='./editar/editarMaquina.php?id=" . $queryRacks['id'] . "'>Editar</a></button>" . "</td>";
+                                            echo "<td >" . "<button class='btn btn-danger'><a href='./deletes/deletarMaquina.php?id=" . $queryRacks['id'] . "'>Deletar</a></button>" . "</td>";
+                                        }
+                                        echo "</tr>";
                                     }
-                                    echo "</tr>";
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                                    ?>
+                                </tbody>
+                            </table>
                     </div>
                 </div>
             </div>
@@ -157,7 +159,7 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 
                 </a>
                 <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"   aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">

@@ -2,6 +2,7 @@
 include_once '../util/corpo.php';
 cabeca();
 ?>
+
 <!-- End of Topbar -->
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -22,6 +23,7 @@ cabeca();
 
 
                 <form method="post" action="../buscas/buscas.php" >
+                    
                     <p class="text-success text-center">Escolha um parametro para busca.</p>
                     <div class="row" >
                         <div class="col-sm">

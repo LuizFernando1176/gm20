@@ -2,11 +2,12 @@
 include_once '../util/conecaoBD.php';
 include_once '../util/corpo.php';
 $coon = conectar();
-$query01 = "SELECT `id`,`login`, `senha`, `nivel` ,`excluido` FROM `usuario` WHERE 1 ";
+$query01 = "SELECT `id`,`login`, `senha`, `nivel` ,`excluido` FROM `usuario` WHERE NOT Excluido ";
 $queryRack = mysqli_query($coon, $query01);
 
 $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
 if ($usuarioLogado['nivel'] == '1') {
+
     header('Location:../index.php?alerta=12');
 } else {
     
