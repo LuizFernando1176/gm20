@@ -26,7 +26,7 @@ $indice = isset($_GET['alerta']) ? $_GET['alerta'] : null;
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-        <h1 class="h3 mb-0 text-gray-800">Controle</h1>
+          
         <div id="divAlerta" class="divAlerta"></div>
     </div>
     <!-- Content Row -->
