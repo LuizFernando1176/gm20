@@ -33,6 +33,7 @@
                                        });
                                    });
                                </script>
+                               
        
         <div id="wrapper">
            <!-- Sidebar -->
@@ -121,9 +122,13 @@
                        </button>
                        <!-- Topbar Search -->
                        <!-- Topbar Navbar -->
-                      <ul >
-                            <input class="form-control" id="search" type="text" name="setor" placeholder="Buscas de Setor"/>
-                           </ul>
+                      <form title="busca completa USE % " class="form-inline" method="post" action="' . urlbase() . '/buscas/buscas.php">
+   <div class="form-group mx-sm-3 mb-2">
+    	<input class="form-control" id="search" type="text" name="setor" placeholder="Busca por Setor"/>
+    
+  </div>
+  <button type="submit" class="btn btn-success mb-2">Busca</button>
+</form>
                        <ul class="navbar-nav ml-auto">
                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                            

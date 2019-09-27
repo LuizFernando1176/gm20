@@ -20,9 +20,9 @@ $rowBarramento = mysqli_fetch_assoc($queryBarramento);
 $rowRack = mysqli_fetch_assoc($queryRack);
 $rowSetor = mysqli_fetch_assoc($querySetor);
 ?>
-<div class="container">
+<div class="container-fluid">
 
-    <div class="card" style="width: max-content;margin-top: 5%;padding: 1%">
+    <div class="card text-center" style="padding: 1%" id="caixa">
         <div class="card-header">Informações da Maquina <?php echo $row['nome_maquina']; ?></div>
         <div class="card-body">
             <input type="hidden" value="<?php echo $id; ?>" name="id" />
@@ -36,12 +36,30 @@ $rowSetor = mysqli_fetch_assoc($querySetor);
             <p>Rack:<strong> <?php echo $rowRack['rack']; ?></strong></p> 
             <p>Sw: <strong><?php echo $rowSw['sw']; ?></strong></p> 
             <p>Barram.: <strong><?php echo $rowBarramento['barramento']; ?></p> 
-            <center><button class='btn btn-success'value='Print this page' onClick='window.print()'>Imprimir</button>
+            <center><button class='btn btn-success'value='Print this page' id="btn">Imprimir</button>
                 <button class="btn btn-dark"><a href="../exibir/exibirMaquinas.php">Voltar</a></button></center>
         </div>
 
     </div>
+    <script >
+        document.getElementById('btn').onclick = function() {
+            var conteudo = document.getElementById('caixa').innerHTML,
+                tela_impressao = window.open('about:blank');
 
+            tela_impressao.document.write(conteudo);
+            tela_impressao.window.print();
+            tela_impressao.window.close();
+        };
+        </script>
+        
+    
 </div>
 <?php
 rodape();
+
+
+
+      
+
+       
+    

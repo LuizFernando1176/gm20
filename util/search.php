@@ -11,6 +11,7 @@
 	if($rows > 0){
 		while($fetch = $query->fetch_assoc()){
 			$data['value'] = $fetch['setor']; 
+			 
 			array_push($list, $data);
 		}
 	}
